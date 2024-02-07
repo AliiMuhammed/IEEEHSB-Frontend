@@ -51,7 +51,6 @@ export const Slogan = () => {
             loading: false,
           });
           setSuccessMsg("");
-          refreshTable();
         });
     }
   }, [slogans.reload]);

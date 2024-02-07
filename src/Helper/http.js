@@ -1,8 +1,10 @@
 import axios from "axios";
 import { getAuthUser } from "./Storage";
-axios.defaults.headers.common["Authorization"] = `IEEE ${
-  getAuthUser() ? getAuthUser().token :""
-}`;
+
+const token = getAuthUser();
+if (token) {
+  axios.defaults.headers.common["Authorization"] = `IEEE ${token.token}`;
+}
 
 axios.defaults.baseURL = "https://ieee-backend-06597876c603.herokuapp.com";
 axios.defaults.withCredentials = true;

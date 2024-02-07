@@ -52,7 +52,6 @@ const Video = () => {
             loading: false,
           });
           setSuccessMsg("");
-          refreshTable();
         });
     }
   }, [videos.reload]);
