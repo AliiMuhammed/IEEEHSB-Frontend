@@ -1,16 +1,14 @@
 import axios from "axios";
 import { getAuthUser } from "./Storage";
 
-const token = getAuthUser();
-if (token) {
-  axios.defaults.headers.common["Authorization"] = `IEEE ${token.token}`;
-}
-
-axios.defaults.baseURL = "https://ieee-backend-06597876c603.herokuapp.com";
-axios.defaults.withCredentials = true;
 const http = {
   GET: async (url, config = {}) => {
     try {
+      const token = await getAuthUser(); // Wait for the token to be retrieved
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = `IEEE ${token.token}`;
+      }
+
       const response = await axios.get(url, config);
       return response.data;
     } catch (error) {
@@ -22,6 +20,11 @@ const http = {
 
   POST: async (url, data = {}, config = {}) => {
     try {
+      const token = await getAuthUser(); // Wait for the token to be retrieved
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = `IEEE ${token.token}`;
+      }
+
       const response = await axios.post(url, data, config);
       return response.data;
     } catch (error) {
@@ -33,6 +36,11 @@ const http = {
 
   PUT: async (url, data = {}, config = {}) => {
     try {
+      const token = await getAuthUser(); // Wait for the token to be retrieved
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = `IEEE ${token.token}`;
+      }
+
       const response = await axios.put(url, data, config);
       return response.data;
     } catch (error) {
@@ -44,6 +52,11 @@ const http = {
 
   PATCH: async (url, data = {}, config = {}) => {
     try {
+      const token = await getAuthUser(); // Wait for the token to be retrieved
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = `IEEE ${token.token}`;
+      }
+
       const response = await axios.patch(url, data, config);
       return response.data;
     } catch (error) {
@@ -55,6 +68,11 @@ const http = {
 
   DELETE: async (url, config = {}) => {
     try {
+      const token = await getAuthUser(); // Wait for the token to be retrieved
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = `IEEE ${token.token}`;
+      }
+
       const response = await axios.delete(url, config);
       return response.data;
     } catch (error) {
@@ -64,5 +82,8 @@ const http = {
     }
   },
 };
+
+axios.defaults.baseURL = "https://ieee-backend-06597876c603.herokuapp.com";
+axios.defaults.withCredentials = true;
 
 export default http;
