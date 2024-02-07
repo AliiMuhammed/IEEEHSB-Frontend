@@ -2,6 +2,12 @@
     height: 60vh;
 }
 
+@media only screen and (max-width: 767px) {
+    .login-section {
+        height: 80vh;
+    }
+}
+
 .login-section .container {
     display: flex;
     align-items: center;
@@ -19,6 +25,20 @@
     -moz-border-radius: var(--main-border-radius);
     -ms-border-radius: var(--main-border-radius);
     -o-border-radius: var(--main-border-radius);
+}
+
+@media only screen and (max-width: 767px) {
+    .login-section .container .login-form {
+        width: 100%;
+        padding: 2rem;
+    }
+}
+
+@media only screen and (min-width: 768px)and (max-width: 991px) {
+    .login-section .container .login-form {
+        width: 100%;
+        padding: 3rem;
+    }
 }
 
 .login-section .container .login-form .logo {
@@ -51,7 +71,6 @@
     -o-transition: var(--main-transition);
 }
 
-.login-section .container .login-form form .input-container {}
 
 .login-section .container .login-form form input {
     background-color: transparent;
@@ -99,7 +118,22 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     width: 100%;
+
 }
+
+@media only screen and (min-width: 768px)and (max-width: 991px) {
+    .role-btns {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .role-btns {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 .role-btns .role-btn {
     display: flex;
@@ -115,7 +149,7 @@
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     transition: var(--main-transition);
     -webkit-transition: var(--main-transition);

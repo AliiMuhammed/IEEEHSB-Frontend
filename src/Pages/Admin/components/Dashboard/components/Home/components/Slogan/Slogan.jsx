@@ -7,7 +7,10 @@ import MainError from "../../../../../../../../Shared/components/MainError";
 import "./style/slogan.css";
 import http from "./../../../../../../../../Helper/http";
 import MainSpinner from "../../../../../../../../Shared/components/MainSpinner";
+import axios from "axios";
+import { getAuthUser } from "../../../../../../../../Helper/Storage";
 export const Slogan = () => {
+  const admin = getAuthUser();
   const headers = ["Id", "Slogan", "Season", "Action"];
 
   const refreshTable = () => {
@@ -26,9 +29,10 @@ export const Slogan = () => {
   useEffect(() => {
     if (slogans.reload) {
       setSlogans({ ...slogans, loading: true });
-
-      http
-        .GET("https://ieee-backend-06597876c603.herokuapp.com/slogan")
+      axios
+        .get("https://ieee-backend-06597876c603.herokuapp.com/slogan", {
+          Authorization: admin.token,
+        })
         .then((res) => {
           console.log(res);
           setSlogans({
@@ -53,6 +57,9 @@ export const Slogan = () => {
           setSuccessMsg("");
           refreshTable();
         });
+
+      // http
+      //   .GET("https://ieee-backend-06597876c603.herokuapp.com/slogan")
     }
   }, [slogans.reload]);
   return (
