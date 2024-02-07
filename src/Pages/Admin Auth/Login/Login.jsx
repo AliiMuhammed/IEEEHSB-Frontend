@@ -31,7 +31,7 @@ const Login = () => {
 
   const validatePassword = (password) => {
     // Password should be at least 8 characters long
-    return password.length >= 8;
+    return password.length >= 5;
   };
 
   const handleLogin = (e) => {

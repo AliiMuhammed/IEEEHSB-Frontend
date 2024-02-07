@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../../../../../../../../../Shared/style/main-table.css";
 import AddSloganModal from "./AddSloganModal";
 import EditSloganModal from "./EditSloganModal";
-import axios from "axios";
 import MainError from "../../../../../../../../../Shared/components/MainError";
 import http from "../../../../../../../../../Helper/http";
 import MainSpinner from "../../../../../../../../../Shared/components/MainSpinner";
@@ -75,7 +74,7 @@ const MainSloganTable = ({
             <tbody>
               {data.map((el, index) => {
                 return (
-                  <tr key={el.id}>
+                  <tr key={el._id}>
                     <td>{index + 1}</td>
                     <td>{el.body}</td>
                     <td>{el.season}</td>
