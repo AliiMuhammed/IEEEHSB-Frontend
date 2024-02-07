@@ -148,6 +148,14 @@ section {
     color: var(--second-font-color);
 }
 
+.form-video {
+    width: 100%;
+}
+
+.form-video>div {
+    width: 100% !important;
+}
+
 .main-spinner.btn-spinner {
     width: 20px;
     height: 20px;

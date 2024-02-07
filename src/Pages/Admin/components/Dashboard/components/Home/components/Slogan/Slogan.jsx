@@ -37,6 +37,13 @@ export const Slogan = () => {
             response: res.results,
           });
           setErrorMsg("");
+          if (res.results.length === 0) {
+            setNotFoundMsg(
+              "There is no slogans, you can add one from add button."
+            );
+          } else {
+            setNotFoundMsg("");
+          }
         })
         .catch((err) => {
           setSlogans({
@@ -44,14 +51,6 @@ export const Slogan = () => {
             loading: false,
           });
           setSuccessMsg("");
-          slogans.response.length === 0 ? (
-            setNotFoundMsg(
-              "There is no slogans, you can add one from add button."
-            )
-          ) : (
-            <></>
-          );
-
           refreshTable();
         });
     }

@@ -5,16 +5,17 @@ import MainSpinner from "../../../../../../../../../Shared/components/MainSpinne
 import MainError from "../../../../../../../../../Shared/components/MainError";
 import http from "../../../../../../../../../Helper/http";
 
-const AddSloganModal = ({
+const AddVideoModal = ({
   isOpen,
   onClose,
   refreshTable,
   setSuccessMsg,
   setNotFoundMsg,
 }) => {
-  const [sloganData, setSloganData] = useState({
+  const [videoData, setVideoData] = useState({
     season: "",
-    slogan: "",
+    video: "",
+    tag: "",
     loading: false,
   });
   const [error, setError] = useState("");
@@ -29,17 +30,28 @@ const AddSloganModal = ({
   const handleAdd = () => {
     const errors = {}; // Object to store validation errors
 
-    // Validate name
-    if (!sloganData.slogan) {
-      errors.slogan = "Slogan is required";
-    }
-
-    // Validate slogan
-    if (!sloganData.season) {
+    // Validate season format
+    if (!videoData.season) {
       errors.season = "Season is required";
-    } else if (!/^\d{4}\/\d{4}$/.test(sloganData.season)) {
+    } else if (!/^\d{4}\/\d{4}$/.test(videoData.season)) {
       errors.season =
         "Season must be in the format YYYY/YYYY (e.g., 2023/2024)";
+    }
+
+    // Validate tag
+    if (!videoData.tag) {
+      errors.tag = "Tag is required";
+    }
+
+    // Validate video
+    if (!videoData.video) {
+      errors.video = "Video is required";
+    } else if (
+      !videoData.video.startsWith("https://") &&
+      !videoData.video.startsWith("http://")
+    ) {
+      errors.video =
+        "Please enter a valid video link starting with 'https://' or 'http://'";
     }
 
     // If there are validation errors, update the state and prevent the API call
@@ -52,32 +64,33 @@ const AddSloganModal = ({
     setValidationErrors({});
 
     // Continue with the API call
-    setSloganData({ ...sloganData, loading: true });
+    setVideoData({ ...videoData, loading: true });
 
     const data = {
-      body: sloganData.slogan,
-      season: sloganData.season,
+      body: videoData.video,
+      season: videoData.season,
+      tag: videoData.tag.toUpperCase(),
     };
     http
-      .POST("https://ieee-backend-06597876c603.herokuapp.com/slogan", data)
+      .POST("https://ieee-backend-06597876c603.herokuapp.com/videos", data)
       .then((res) => {
-        setSloganData({
-          ...sloganData,
+        setVideoData({
+          ...videoData,
           loading: false,
         });
-        setSuccessMsg("Slogan added successfully.");
+        setSuccessMsg("Video added successfully.");
         setNotFoundMsg("");
         setError("");
         refreshTable();
         handleModalClose();
       })
       .catch((err) => {
-        setSloganData({
-          ...sloganData,
+        setVideoData({
+          ...videoData,
           loading: false,
         });
         setSuccessMsg("");
-        setError("An error occurred while adding the slogan.");
+        setError("An error occurred while adding the video.");
       });
   };
 
@@ -90,27 +103,27 @@ const AddSloganModal = ({
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title>Add Slogan</Modal.Title>
+        <Modal.Title>Add Video</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {error.length !== 0 && <MainError msg={error} />}
         <form>
           <div className="mb-3">
-            <label htmlFor="slogan" className="form-label">
-              Slogan
+            <label htmlFor="video" className="form-label">
+              Video Link
             </label>
             <input
               type="text"
               className="form-control"
-              id="slogan"
-              placeholder="IEEE HSB"
-              value={sloganData.slogan}
+              id="video"
+              placeholder="https://www.youtube.com...."
+              value={videoData.video}
               onChange={(e) =>
-                setSloganData({ ...sloganData, slogan: e.target.value })
+                setVideoData({ ...videoData, video: e.target.value })
               }
             />
-            {validationErrors.slogan && (
-              <div className="text-danger">{validationErrors.slogan}</div>
+            {validationErrors.video && (
+              <div className="text-danger">{validationErrors.video}</div>
             )}
           </div>
           <div className="mb-3">
@@ -122,13 +135,31 @@ const AddSloganModal = ({
               className="form-control"
               id="season"
               placeholder="2023/2024"
-              value={sloganData.season}
+              value={videoData.season}
               onChange={(e) =>
-                setSloganData({ ...sloganData, season: e.target.value })
+                setVideoData({ ...videoData, season: e.target.value })
               }
             />
             {validationErrors.season && (
               <div className="text-danger">{validationErrors.season}</div>
+            )}
+          </div>
+          <div className="mb-3">
+            <label htmlFor="tag" className="form-label">
+              Video Tag
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="tag"
+              placeholder="where do you want to show the vidoe? like Home page"
+              value={videoData.tag}
+              onChange={(e) =>
+                setVideoData({ ...videoData, tag: e.target.value })
+              }
+            />
+            {validationErrors.tag && (
+              <div className="text-danger">{validationErrors.tag}</div>
             )}
           </div>
         </form>
@@ -144,7 +175,7 @@ const AddSloganModal = ({
               handleAdd();
             }}
           >
-            {!sloganData.loading ? (
+            {!videoData.loading ? (
               "Save Changes"
             ) : (
               <MainSpinner className={"btn-spinner"} />
@@ -156,8 +187,7 @@ const AddSloganModal = ({
   );
 };
 
-// Prop types validation
-AddSloganModal.propTypes = {
+AddVideoModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   refreshTable: PropTypes.func.isRequired,
@@ -165,4 +195,4 @@ AddSloganModal.propTypes = {
   setNotFoundMsg: PropTypes.func.isRequired,
 };
 
-export default AddSloganModal;
+export default AddVideoModal;

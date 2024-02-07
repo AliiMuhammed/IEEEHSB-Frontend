@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types"; // Import PropTypes for props validation
 import "../../../../../../../../../Shared/style/main-table.css";
-import AddSloganModal from "./AddSloganModal";
-import EditSloganModal from "./EditSloganModal";
+import AddVideoModal from "./AddVideoModal";
+import EditVideoModal from "./EditVideoModal";
 import MainError from "../../../../../../../../../Shared/components/MainError";
 import http from "../../../../../../../../../Helper/http";
 import MainSpinner from "../../../../../../../../../Shared/components/MainSpinner";
+import { Link } from "react-router-dom";
 
-const MainSloganTable = ({
+const MainVideosTable = ({
   headers,
   data,
   className,
@@ -19,29 +20,30 @@ const MainSloganTable = ({
 }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [selectedSlogan, setSelectedSlogan] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
   const [loading, setLoading] = useState({ loading: false, id: "" });
 
-  const handleAddSlogan = () => {
+  const handleAddVideo = () => {
     setIsAddModalOpen(true);
   };
 
-  const handleEditSlogan = (slogan) => {
-    setSelectedSlogan(slogan);
+  const handleEditVideo = (video) => {
+    setSelectedVideo(video);
     setIsEditModalOpen(true);
   };
 
   const handelDelete = (id) => {
     setLoading({ ...loading, loading: true, id: id });
     http
-      .DELETE(`https://ieee-backend-06597876c603.herokuapp.com/slogan/${id}`)
+      .DELETE(`https://ieee-backend-06597876c603.herokuapp.com/videos/${id}`)
       .then((res) => {
         setErrorMsg("");
-        setSuccessMsg("Slogan deleted successfully.");
+        setSuccessMsg("Video deleted successfully.");
         setLoading({ ...loading, loading: false, id: id });
+
         data.length === 0
           ? setNotFoundMsg(
-              "There is no slogans, you can add one form add button."
+              "There are no videos, you can add one from the add button."
             )
           : setNotFoundMsg("");
         refresh();
@@ -49,21 +51,20 @@ const MainSloganTable = ({
       .catch((err) => {
         refresh();
         setSuccessMsg("");
-        setErrorMsg("Can't delete slogan.");
+        setErrorMsg("Couldn't delete video.");
         setLoading({ ...loading, loading: false, id: id });
       });
   };
-
   return (
     <>
       <div className={`main-table ${className}`}>
         <div className="table-header">
-          <h1>Slogans</h1>
-          <button className="main-btn add-btn" onClick={handleAddSlogan}>
-            Add slogans
+          <h1>Videos</h1>
+          <button className="main-btn add-btn" onClick={handleAddVideo}>
+            Add videos
           </button>
         </div>
-
+        
         {notFoundMsg.length !== 0 ? (
           <MainError msg={notFoundMsg} className={"successMsg"} />
         ) : (
@@ -80,8 +81,17 @@ const MainSloganTable = ({
                 return (
                   <tr key={el._id}>
                     <td>{index + 1}</td>
-                    <td>{el.body}</td>
+                    <td>
+                      <Link
+                        to={el.body}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Watch Video
+                      </Link>
+                    </td>
                     <td>{el.season}</td>
+                    <td>{el.tag}</td>
                     <td>
                       <div className="action-btns">
                         <button
@@ -97,7 +107,7 @@ const MainSloganTable = ({
                         </button>
                         <button
                           className="main-btn edit-btn"
-                          onClick={() => handleEditSlogan(el)}
+                          onClick={() => handleEditVideo(el)}
                         >
                           Edit
                         </button>
@@ -111,7 +121,7 @@ const MainSloganTable = ({
         )}
       </div>
 
-      <AddSloganModal
+      <AddVideoModal
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
         refreshTable={refresh}
@@ -119,10 +129,10 @@ const MainSloganTable = ({
         setNotFoundMsg={setNotFoundMsg}
       />
 
-      <EditSloganModal
+      <EditVideoModal
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
-        selectedSlogan={selectedSlogan}
+        selectedVideo={selectedVideo}
         refreshTable={refresh}
         setSuccessMsg={setSuccessMsg}
       />
@@ -130,8 +140,7 @@ const MainSloganTable = ({
   );
 };
 
-// Prop types validation
-MainSloganTable.propTypes = {
+MainVideosTable.propTypes = {
   headers: PropTypes.array.isRequired,
   data: PropTypes.array.isRequired,
   className: PropTypes.string,
@@ -142,4 +151,4 @@ MainSloganTable.propTypes = {
   notFoundMsg: PropTypes.string,
 };
 
-export default MainSloganTable;
+export default MainVideosTable;

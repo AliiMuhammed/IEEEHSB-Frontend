@@ -5,31 +5,33 @@ import Modal from "react-bootstrap/Modal";
 import MainError from "../../../../../../../../../Shared/components/MainError";
 import MainSpinner from "../../../../../../../../../Shared/components/MainSpinner";
 import http from "../../../../../../../../../Helper/http";
-
-const EditSloganModal = ({
+import ReactPlayer from "react-player";
+const EditVideoModal = ({
   isOpen,
   onClose,
-  selectedSlogan,
+  selectedVideo,
   refreshTable,
   setSuccessMsg,
 }) => {
-  const [sloganData, setSloganData] = useState({
-    body: "",
+  const [videoData, setVideoData] = useState({
     season: "",
+    video: "",
+    tag: "",
     loading: false,
   });
   const [error, setError] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
 
   useEffect(() => {
-    if (selectedSlogan) {
-      setSloganData({
-        body: selectedSlogan.body || "",
-        season: selectedSlogan.season || "",
+    if (selectedVideo) {
+      setVideoData({
+        video: selectedVideo.body || "",
+        season: selectedVideo.season || "",
+        tag: selectedVideo.tag || "",
         loading: false,
       });
     }
-  }, [selectedSlogan]);
+  }, [selectedVideo]);
 
   const handleModalClose = () => {
     setValidationErrors({});
@@ -40,15 +42,27 @@ const EditSloganModal = ({
   const handleEdit = () => {
     const errors = {};
 
-    if (!sloganData.body) {
-      errors.body = "Slogan is required";
+    // Validate video
+    if (!videoData.video) {
+      errors.video = "Video is required";
+    } else if (
+      !videoData.video.startsWith("https://") &&
+      !videoData.video.startsWith("http://")
+    ) {
+      errors.video =
+        "Please enter a valid video link starting with 'https://' or 'http://'";
     }
 
-    if (!sloganData.season) {
+    // Validate season format
+    if (!videoData.season) {
       errors.season = "Season is required";
-    } else if (!/^\d{4}\/\d{4}$/.test(sloganData.season)) {
+    } else if (!/^\d{4}\/\d{4}$/.test(videoData.season)) {
       errors.season =
         "Season must be in the format YYYY/YYYY (e.g., 2023/2024)";
+    }
+
+    if (!videoData.tag) {
+      errors.tag = "Video tag is required";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -58,35 +72,37 @@ const EditSloganModal = ({
 
     setValidationErrors({});
 
-    setSloganData({ ...sloganData, loading: true });
+    setVideoData({ ...videoData, loading: true });
 
     const data = {
-      body: sloganData.body,
-      season: sloganData.season,
+      body: videoData.video,
+      season: videoData.season,
+      tag: videoData.tag.toUpperCase(),
     };
-    // You need to replace 'selectedSlogan.id' with the actual ID of the slogan to be edited.
+    // You need to replace 'selectedVideo.id' with the actual ID of the video to be edited.
+    console.log(data);
     http
       .PATCH(
-        `https://ieee-backend-06597876c603.herokuapp.com/slogan/${selectedSlogan._id}`,
+        `https://ieee-backend-06597876c603.herokuapp.com/videos/${selectedVideo._id}`,
         data
       )
       .then((res) => {
-        setSloganData({
-          ...sloganData,
+        setVideoData({
+          ...videoData,
           loading: false,
         });
         setError("");
-        setSuccessMsg("Slogan Updated successfully.");
+        setSuccessMsg("Video Updated successfully.");
         refreshTable();
         handleModalClose();
       })
       .catch((err) => {
         console.log(err);
-        setSloganData({
-          ...sloganData,
+        setVideoData({
+          ...videoData,
           loading: false,
         });
-        setError("An error occurred while editing the slogan.");
+        setError("An error occurred while editing the video.");
       });
   };
 
@@ -99,20 +115,20 @@ const EditSloganModal = ({
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title>Edit Slogan</Modal.Title>
+        <Modal.Title>Edit Video</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {error.length !== 0 && <MainError msg={error} />}
         <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Slogan</Form.Label>
+            <Form.Label>Video Link</Form.Label>
             <Form.Control
               type="text"
               autoFocus
-              placeholder="e.g., IEEE HSB"
-              value={sloganData.body}
+              placeholder="https://www.youtube.com/"
+              value={videoData.video}
               onChange={(e) =>
-                setSloganData({ ...sloganData, body: e.target.value })
+                setVideoData({ ...videoData, video: e.target.value })
               }
             />
             {validationErrors.body && (
@@ -123,17 +139,34 @@ const EditSloganModal = ({
             <Form.Label>Season</Form.Label>
             <Form.Control
               type="text"
-              placeholder="e.g., 2023/2024"
-              value={sloganData.season}
+              placeholder="2023/2024"
+              value={videoData.season}
               onChange={(e) =>
-                setSloganData({ ...sloganData, season: e.target.value })
+                setVideoData({ ...videoData, season: e.target.value })
               }
             />
             {validationErrors.season && (
               <div className="text-danger">{validationErrors.season}</div>
             )}
           </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+            <Form.Label>Video Tag</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="like Home or About us"
+              value={videoData.tag}
+              onChange={(e) =>
+                setVideoData({ ...videoData, tag: e.target.value })
+              }
+            />
+            {validationErrors.tag && (
+              <div className="text-danger">{validationErrors.tag}</div>
+            )}
+          </Form.Group>
         </Form>
+        <div className="form-video">
+          <ReactPlayer url={selectedVideo ? selectedVideo.body : ""} />
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <div className="action-btns">
@@ -146,7 +179,7 @@ const EditSloganModal = ({
               handleEdit();
             }}
           >
-            {!sloganData.loading ? (
+            {!videoData.loading ? (
               "Save Changes"
             ) : (
               <MainSpinner className={"btn-spinner"} />
@@ -158,13 +191,12 @@ const EditSloganModal = ({
   );
 };
 
-// Prop types validation
-EditSloganModal.propTypes = {
+EditVideoModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  selectedSlogan: PropTypes.object,
+  selectedVideo: PropTypes.object,
   refreshTable: PropTypes.func.isRequired,
   setSuccessMsg: PropTypes.func.isRequired,
 };
 
-export default EditSloganModal;
+export default EditVideoModal;
