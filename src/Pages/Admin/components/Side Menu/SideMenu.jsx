@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import imgProfile from "../../../../Assets/user/user.png";
 import "./style/sideMenu.css";
 import { getAuthUser, removeAuthUser } from "../../../../Helper/Storage";
 import { MdElectricalServices } from "react-icons/md";
@@ -48,12 +47,10 @@ function SideMenu({ name, ...props }) {
         <Offcanvas.Body>
           <div className="links-sideMenu">
             <div className="admin-data sideMenu-adminData">
-              <div className="admin-img">
-                <img
-                  src={admin.image === "" ? imgProfile : admin.image}
-                  alt=""
-                />
-              </div>
+              <div
+                className="admin-img"
+                style={{ backgroundImage: `url(${admin.image})` }}
+              ></div>
               <div className="admin-name">
                 <span>{admin.name}</span>
               </div>
