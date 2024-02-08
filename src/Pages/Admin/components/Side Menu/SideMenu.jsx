@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import imgProfile from "../../../../Assets/user/user.png";
 import "./style/sideMenu.css";
+import { getAuthUser, removeAuthUser } from "../../../../Helper/Storage";
 import { MdElectricalServices } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
 import { AiFillInfoCircle } from "react-icons/ai";
 import { FaBars, FaPhone } from "react-icons/fa";
 import { RiDashboardFill } from "react-icons/ri";
 import HomeDropDown from "./components/HomeDropDown";
-import { removeAuthUser } from "../../../../Helper/Storage";
+import PropTypes from "prop-types";
+
 function SideMenu({ name, ...props }) {
   const [show, setShow] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(false);
@@ -29,6 +32,7 @@ function SideMenu({ name, ...props }) {
     navigate("/");
   };
 
+  const admin = getAuthUser();
 
   return (
     <>
@@ -43,6 +47,18 @@ function SideMenu({ name, ...props }) {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <div className="links-sideMenu">
+            <div className="admin-data sideMenu-adminData">
+              <div className="admin-img">
+                <img
+                  src={admin.image === "" ? imgProfile : admin.image}
+                  alt=""
+                />
+              </div>
+              <div className="admin-name">
+                <span>{admin.name}</span>
+              </div>
+            </div>
+
             <Link to={"/admin"} onClick={handleClose}>
               <div className="icon">
                 <RiDashboardFill />
@@ -97,5 +113,7 @@ function SideMenu({ name, ...props }) {
     </>
   );
 }
-
+SideMenu.propTypes = {
+  name: PropTypes.string, 
+};
 export default SideMenu;

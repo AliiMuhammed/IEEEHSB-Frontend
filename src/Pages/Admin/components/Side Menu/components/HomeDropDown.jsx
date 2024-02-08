@@ -1,16 +1,22 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
+import PropTypes from "prop-types";
 
 const HomeDropDown = ({ handleClose, toggleSubMenu, showSubMenu }) => {
   return (
     <div className="drop-down">
-      <div onClick={toggleSubMenu} className="drop-down-link">
+      <button
+        className="drop-down-link"
+        onClick={toggleSubMenu}
+        aria-expanded={showSubMenu} // Indicate if the dropdown is expanded
+        aria-haspopup="true" // Indicate that the button triggers a dropdown menu
+      >
         <div className="icon">
           <AiFillHome />
         </div>
         Home
-      </div>
+      </button>
       <div className={`sub-menu ${showSubMenu ? "open" : ""}`}>
         <NavLink to="/admin/dashboard/home/slogan" onClick={handleClose}>
           Slogan
@@ -34,5 +40,9 @@ const HomeDropDown = ({ handleClose, toggleSubMenu, showSubMenu }) => {
     </div>
   );
 };
-
+HomeDropDown.propTypes = {
+  handleClose: PropTypes.func.isRequired,
+  toggleSubMenu: PropTypes.func.isRequired,
+  showSubMenu: PropTypes.bool.isRequired,
+};
 export default HomeDropDown;
