@@ -99,7 +99,7 @@ function SideMenu({ name, ...props }) {
 
           {/* Authenticated Routes */}
           {/* {auth */}
-          {true && (
+          {admin && (
             <NavLink
               className=" main-btn admin-LogoutBtn"
               onClick={LogOut}
@@ -114,6 +114,6 @@ function SideMenu({ name, ...props }) {
   );
 }
 SideMenu.propTypes = {
-  name: PropTypes.string, 
+  name: PropTypes.string,
 };
 export default SideMenu;

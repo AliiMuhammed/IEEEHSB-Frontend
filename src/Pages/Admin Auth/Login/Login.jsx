@@ -78,7 +78,7 @@ const Login = () => {
         console.log(res);
         setAuthUser(res);
         setMainError("");
-        navigate("/admin/dashboard/home");
+        navigate("/");
       })
       .catch((err) => {
         setLoading(false);

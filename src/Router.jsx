@@ -11,47 +11,53 @@ import Achieveiments from "./Pages/Admin/components/Dashboard/components/Home/co
 import { Partners } from "./Pages/Admin/components/Dashboard/components/Home/components/Partners/Partners";
 import { Testimonials } from "./Pages/Admin/components/Dashboard/components/Home/components/Testimonials/Testimonials";
 import Login from "./Pages/Admin Auth/Login/Login";
-
+import AdminGuest from "./Middleware/Admin/AdminGuest";
+import AdminDashboard from "./Middleware/Admin/AdminDashboard";
 export const router = createBrowserRouter([
   {
     path: "",
     element: <App />,
     children: [
       {
-        path: "/admin",
-        element: <Admin />,
+        element: <AdminDashboard />,
         children: [
           {
-            path: "/admin/dashboard",
-            element: <Dashboard />,
+            path: "/admin",
+            element: <Admin />,
             children: [
               {
-                path: "/admin/dashboard/home",
-                element: <Home />,
+                path: "/admin/dashboard",
+                element: <Dashboard />,
                 children: [
                   {
-                    path: "/admin/dashboard/home/slogan",
-                    element: <Slogan />,
-                  },
-                  {
-                    path: "/admin/dashboard/home/video",
-                    element: <Video />,
-                  },
-                  {
-                    path: "/admin/dashboard/home/family",
-                    element: <Family />,
-                  },
-                  {
-                    path: "/admin/dashboard/home/achievements",
-                    element: <Achieveiments />,
-                  },
-                  {
-                    path: "/admin/dashboard/home/partners",
-                    element: <Partners />,
-                  },
-                  {
-                    path: "/admin/dashboard/home/testimonials",
-                    element: <Testimonials />,
+                    path: "/admin/dashboard/home",
+                    element: <Home />,
+                    children: [
+                      {
+                        path: "/admin/dashboard/home/slogan",
+                        element: <Slogan />,
+                      },
+                      {
+                        path: "/admin/dashboard/home/video",
+                        element: <Video />,
+                      },
+                      {
+                        path: "/admin/dashboard/home/family",
+                        element: <Family />,
+                      },
+                      {
+                        path: "/admin/dashboard/home/achievements",
+                        element: <Achieveiments />,
+                      },
+                      {
+                        path: "/admin/dashboard/home/partners",
+                        element: <Partners />,
+                      },
+                      {
+                        path: "/admin/dashboard/home/testimonials",
+                        element: <Testimonials />,
+                      },
+                    ],
                   },
                 ],
               },
@@ -63,8 +69,13 @@ export const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: "/adminLogin",
-    element: <Login />,
+    element: <AdminGuest />,
+    children: [
+      {
+        path: "/admin/Login",
+        element: <Login />,
+      },
+    ],
   },
 ]);
 export default router;
