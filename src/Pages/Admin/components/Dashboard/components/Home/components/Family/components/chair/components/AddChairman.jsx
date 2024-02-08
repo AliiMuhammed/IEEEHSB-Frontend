@@ -15,13 +15,8 @@ const AddChairman = ({
   const [chairmanData, setChairmanData] = useState({
     name: "",
     email: "",
-    phone: "",
     role: "Chairman",
     committee: "",
-    github: "",
-    linkedin: "",
-    faculty: "",
-    image: null,
     loading: false,
   });
   const [error, setError] = useState("");
@@ -45,19 +40,8 @@ const AddChairman = ({
     } else if (!isValidEmail(chairmanData.email)) {
       errors.email = "Invalid email address";
     }
-    if (!chairmanData.phone) {
-      errors.phone = "Phone is required";
-    } else if (!isValidPhoneNumber(chairmanData.phone)) {
-      errors.phone = "Invalid phone number";
-    }
     if (!chairmanData.committee) {
       errors.committee = "Committee is required";
-    }
-    if (!chairmanData.faculty) {
-      errors.faculty = "Faculty is required";
-    }
-    if (!chairmanData.image) {
-      errors.image = "Image is required";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -68,18 +52,16 @@ const AddChairman = ({
     setValidationErrors({});
     setChairmanData({ ...chairmanData, loading: true });
 
-    const formData = new FormData();
-    formData.append("name", chairmanData.name);
-    formData.append("email", chairmanData.email);
-    formData.append("phone", chairmanData.phone);
-    formData.append("role", chairmanData.role);
-    formData.append("committee", chairmanData.committee);
-    formData.append("faculty", chairmanData.faculty);
-    formData.append("image", chairmanData.image);
+    const data = {
+      name: chairmanData.name,
+      role: chairmanData.role,
+      email: chairmanData.email,
+      committee: chairmanData.committee,
+    };
 
     // Send data to the API
     http
-      .POST("/team/createTeamMember", formData) // Update the API endpoint accordingly
+      .POST("/team/createTeamMember", data) // Update the API endpoint accordingly
       .then((res) => {
         setChairmanData({ ...chairmanData, loading: false });
         setSuccessMsg("Chairman added successfully.");
@@ -98,17 +80,6 @@ const AddChairman = ({
     // Basic email validation
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return re.test(String(email).toLowerCase());
-  };
-
-  const isValidPhoneNumber = (phone) => {
-    // Basic phone number validation
-    const re = /^\d{11}$/; // Assuming a 10-digit phone number
-    return re.test(String(phone));
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setChairmanData({ ...chairmanData, image: file });
   };
 
   return (
@@ -161,24 +132,7 @@ const AddChairman = ({
               <div className="text-danger">{validationErrors.email}</div>
             )}
           </div>
-          <div className="mb-3">
-            <label htmlFor="phone" className="form-label">
-              Phone
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="phone"
-              placeholder="Enter phone"
-              value={chairmanData.phone}
-              onChange={(e) =>
-                setChairmanData({ ...chairmanData, phone: e.target.value })
-              }
-            />
-            {validationErrors.phone && (
-              <div className="text-danger">{validationErrors.phone}</div>
-            )}
-          </div>
+
           <div className="mb-3">
             <label htmlFor="committee" className="form-label">
               Committee
@@ -197,70 +151,6 @@ const AddChairman = ({
               <div className="text-danger">{validationErrors.committee}</div>
             )}
           </div>
-          <div className="mb-3">
-            <label htmlFor="faculty" className="form-label">
-              Faculty
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="faculty"
-              placeholder="Enter faculty"
-              value={chairmanData.faculty}
-              onChange={(e) =>
-                setChairmanData({ ...chairmanData, faculty: e.target.value })
-              }
-            />
-            {validationErrors.faculty && (
-              <div className="text-danger">{validationErrors.faculty}</div>
-            )}
-          </div>
-          <div className="mb-3">
-            <label htmlFor="github" className="form-label">
-              GitHub
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="github"
-              placeholder="Enter GitHub"
-              value={chairmanData.github}
-              onChange={(e) =>
-                setChairmanData({ ...chairmanData, github: e.target.value })
-              }
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="linkedin" className="form-label">
-              LinkedIn
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="linkedin"
-              placeholder="Enter LinkedIn"
-              value={chairmanData.linkedin}
-              onChange={(e) =>
-                setChairmanData({ ...chairmanData, linkedin: e.target.value })
-              }
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="image" className="form-label">
-              Image
-            </label>
-            <input
-              type="file"
-              className="form-control"
-              id="image"
-              placeholder="Upload image"
-              accept=".jpg, .jpeg, .png"
-              onChange={handleImageChange}
-            />
-            {validationErrors.image && (
-              <div className="text-danger">{validationErrors.image}</div>
-            )}
-          </div>
         </form>
       </Modal.Body>
       <Modal.Footer>
@@ -268,7 +158,11 @@ const AddChairman = ({
           <button className="main-btn delete-btn" onClick={handleModalClose}>
             Close
           </button>
-          <button className="main-btn" onClick={handleAdd}>
+          <button
+            className="main-btn"
+            disabled={chairmanData.loading}
+            onClick={handleAdd}
+          >
             {!chairmanData.loading ? (
               "Save Changes"
             ) : (

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import MainHeading from "./../../../../../../../../../../Shared/components/MainHeading";
-import { FaIdCardClip } from "react-icons/fa6";
 import http from "../../../../../../../../../../Helper/http";
 import MainError from "../../../../../../../../../../Shared/components/MainError";
 import MainSpinner from "../../../../../../../../../../Shared/components/MainSpinner";

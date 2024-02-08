@@ -5,7 +5,6 @@ import http from "../../../../../../../../../../../Helper/http";
 import AddChairman from "./AddChairman";
 import EditChairman from "./EditChairman";
 import PropTypes from "prop-types"; // Import PropTypes for props validation
-import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 
 const MainChairmenTable = ({
