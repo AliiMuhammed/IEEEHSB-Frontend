@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-// import { getAuthUser } from "../../../Helper/Storage";
-import imgProfile from "../../Assets/user/user.png";
 import logo from "../../Assets/logos/horizontal logo.png";
 import "../style/AdminNavbar.css";
 import SideMenu from "../../Pages/Admin/components/Side Menu/SideMenu";
@@ -17,9 +15,10 @@ const AdminNavbar = () => {
         </div>
         <div className="right">
           <div className="admin-data">
-            <div className="admin-img">
-              <img src={user.image} alt="" />
-            </div>
+            <div
+              className="admin-img"
+              style={{ backgroundImage: `url(${user.image})` }}
+            ></div>
             <div className="admin-name">
               <span>{user.name}</span>
             </div>
