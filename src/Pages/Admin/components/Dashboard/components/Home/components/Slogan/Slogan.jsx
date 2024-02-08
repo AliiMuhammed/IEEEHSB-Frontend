@@ -28,9 +28,8 @@ export const Slogan = () => {
       setSlogans({ ...slogans, loading: true });
 
       http
-        .GET("https://ieee-backend-06597876c603.herokuapp.com/slogan")
+        .GET("/slogan")
         .then((res) => {
-          console.log(res);
           setSlogans({
             ...slogans,
             loading: false,

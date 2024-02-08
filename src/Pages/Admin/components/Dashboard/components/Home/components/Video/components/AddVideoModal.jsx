@@ -72,7 +72,7 @@ const AddVideoModal = ({
       tag: videoData.tag.toUpperCase(),
     };
     http
-      .POST("https://ieee-backend-06597876c603.herokuapp.com/videos", data)
+      .POST("/videos", data)
       .then((res) => {
         setVideoData({
           ...videoData,

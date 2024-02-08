@@ -1,0 +1,31 @@
+.main-heading {
+    text-align: center;
+
+}
+
+.main-heading .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-heading .container span {
+    background-color: var(--second-font-color);
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+}
+
+.main-heading .container h1 {
+    font-weight: 500;
+    font-size: 3rem;
+    color: var(--main-bg);
+}

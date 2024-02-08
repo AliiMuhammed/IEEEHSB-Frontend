@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import MainError from "../../../../../../../../../../../Shared/components/MainError";
+import MainSpinner from "../../../../../../../../../../../Shared/components/MainSpinner";
+import http from "../../../../../../../../../../../Helper/http";
+import AddChairman from "./AddChairman";
+import EditChairman from "./EditChairman";
 import PropTypes from "prop-types"; // Import PropTypes for props validation
-import "../../../../../../../../../Shared/style/main-table.css";
-import AddSloganModal from "./AddSloganModal";
-import EditSloganModal from "./EditSloganModal";
-import MainError from "../../../../../../../../../Shared/components/MainError";
-import http from "../../../../../../../../../Helper/http";
-import MainSpinner from "../../../../../../../../../Shared/components/MainSpinner";
+import Table from "react-bootstrap/Table";
+import { Link } from "react-router-dom";
 
-const MainSloganTable = ({
+const MainChairmenTable = ({
   headers,
   data,
   className,
@@ -26,22 +27,22 @@ const MainSloganTable = ({
     setIsAddModalOpen(true);
   };
 
-  const handleEditSlogan = (slogan) => {
-    setSelectedSlogan(slogan);
+  const handleEditSlogan = (chairman) => {
+    setSelectedSlogan(chairman);
     setIsEditModalOpen(true);
   };
 
   const handelDelete = (id) => {
     setLoading({ ...loading, loading: true, id: id });
     http
-      .DELETE(`/slogan/${id}`)
+      .DELETE(`/chairman/${id}`)
       .then((res) => {
         setErrorMsg("");
         setSuccessMsg("Slogan deleted successfully.");
         setLoading({ ...loading, loading: false, id: id });
         data.length === 0
           ? setNotFoundMsg(
-              "There is no slogans, you can add one form add button."
+              "There is no chairmen, you can add one form add button."
             )
           : setNotFoundMsg("");
         refresh();
@@ -49,7 +50,7 @@ const MainSloganTable = ({
       .catch((err) => {
         refresh();
         setSuccessMsg("");
-        setErrorMsg("Can't delete slogan.");
+        setErrorMsg("Can't delete chairman.");
         setLoading({ ...loading, loading: false, id: id });
       });
   };
@@ -58,9 +59,9 @@ const MainSloganTable = ({
     <>
       <div className={`main-table ${className}`}>
         <div className="table-header">
-          <h1>Slogans</h1>
+          <h1>EXcom</h1>
           <button className="main-btn add-btn" onClick={handleAddSlogan}>
-            Add slogans
+            Add chairmen
           </button>
         </div>
 
@@ -80,8 +81,23 @@ const MainSloganTable = ({
                 return (
                   <tr key={el._id}>
                     <td>{index + 1}</td>
-                    <td>{el.body}</td>
-                    <td>{el.season}</td>
+                    <td>
+                      <div
+                        className="table-img"
+                        style={{ backgroundImage: `url(${el.image})` }}
+                      ></div>
+                    </td>
+                    <td>{el.name}</td>
+                    <td>{el.committee}</td>
+                    <td>
+                      <Link to={el.github}>GitHub</Link>
+                    </td>
+                    <td>
+                      <Link to={el.linkedin}>LinkedIn</Link>
+                    </td>
+                    <td>{el.faculty}</td>
+                    <td>{el.email}</td>
+                    <td>{el.phone}</td>
                     <td>
                       <div className="action-btns">
                         <button
@@ -111,15 +127,14 @@ const MainSloganTable = ({
         )}
       </div>
 
-      <AddSloganModal
+      <AddChairman
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
         refreshTable={refresh}
         setSuccessMsg={setSuccessMsg}
         setNotFoundMsg={setNotFoundMsg}
       />
-
-      <EditSloganModal
+      <EditChairman
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
         selectedSlogan={selectedSlogan}
@@ -130,8 +145,7 @@ const MainSloganTable = ({
   );
 };
 
-// Prop types validation
-MainSloganTable.propTypes = {
+MainChairmenTable.propTypes = {
   headers: PropTypes.array.isRequired,
   data: PropTypes.array.isRequired,
   className: PropTypes.string,
@@ -141,5 +155,4 @@ MainSloganTable.propTypes = {
   setNotFoundMsg: PropTypes.func.isRequired,
   notFoundMsg: PropTypes.string,
 };
-
-export default MainSloganTable;
+export default MainChairmenTable;

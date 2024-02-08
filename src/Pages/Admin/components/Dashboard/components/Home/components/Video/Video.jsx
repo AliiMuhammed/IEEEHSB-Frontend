@@ -29,7 +29,7 @@ const Video = () => {
       setVideos({ ...videos, loading: true });
 
       http
-        .GET("https://ieee-backend-06597876c603.herokuapp.com/videos")
+        .GET("/videos")
         .then((res) => {
           console.log(res);
           setVideos({

@@ -66,10 +66,7 @@ const EditSloganModal = ({
     };
     // You need to replace 'selectedSlogan.id' with the actual ID of the slogan to be edited.
     http
-      .PATCH(
-        `https://ieee-backend-06597876c603.herokuapp.com/slogan/${selectedSlogan._id}`,
-        data
-      )
+      .PATCH(`/slogan/${selectedSlogan._id}`, data)
       .then((res) => {
         setSloganData({
           ...sloganData,

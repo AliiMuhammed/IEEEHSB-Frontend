@@ -59,7 +59,7 @@ const AddSloganModal = ({
       season: sloganData.season,
     };
     http
-      .POST("https://ieee-backend-06597876c603.herokuapp.com/slogan", data)
+      .POST("/slogan", data)
       .then((res) => {
         setSloganData({
           ...sloganData,

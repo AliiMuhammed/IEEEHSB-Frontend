@@ -83,7 +83,7 @@ const EditVideoModal = ({
     console.log(data);
     http
       .PATCH(
-        `https://ieee-backend-06597876c603.herokuapp.com/videos/${selectedVideo._id}`,
+        `/videos/${selectedVideo._id}`,
         data
       )
       .then((res) => {
