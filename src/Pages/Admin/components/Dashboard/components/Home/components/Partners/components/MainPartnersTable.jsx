@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import Table from "react-bootstrap/Table";
+import PropTypes from "prop-types";
 import "../../../../../../../../../Shared/style/main-table.css";
-import { Link } from "react-router-dom";
 import AddPartnerModal from "./AddPartnerModal";
 import EditPartnerModal from "./EditPartnerModal";
-import axios from "axios";
 import MainError from "../../../../../../../../../Shared/components/MainError";
+import { Link } from "react-router-dom";
+import http from "../../../../../../../../../Helper/http";
+import MainSpinner from "../../../../../../../../../Shared/components/MainSpinner";
+
 const MainPartnersTable = ({
   headers,
   data,
@@ -19,6 +21,7 @@ const MainPartnersTable = ({
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedPartner, setSelectedPartner] = useState(null);
+  const [loading, setLoading] = useState({ loading: false, id: "" });
 
   const handleAddPartner = () => {
     setIsAddModalOpen(true);
@@ -30,24 +33,31 @@ const MainPartnersTable = ({
   };
 
   const handelDelete = (id) => {
-    axios
-      .delete(`http://localhost:3000/partners/${id}`)
+    setLoading({ ...loading, loading: true, id: id });
+
+    http
+      .DELETE(`/partners/${id}`)
       .then((res) => {
+        setLoading({ ...loading, loading: false, id: id });
+
         setErrorMsg("");
         setSuccessMsg("Partner deleted successfully.");
         data.length === 0
           ? setNotFoundMsg(
-              "There is no partners, you can add one form add button."
+              "There are no partners, you can add one from the add button."
             )
           : setNotFoundMsg("");
         refresh();
       })
       .catch((err) => {
+        setLoading({ ...loading, loading: false, id: id });
+
         refresh();
         setSuccessMsg("");
-        setErrorMsg("Cann't delete partner.");
+        setErrorMsg("Can't delete partner.");
       });
   };
+
   return (
     <>
       <div className={`main-table ${className}`}>
@@ -61,7 +71,7 @@ const MainPartnersTable = ({
         {notFoundMsg.length !== 0 ? (
           <MainError msg={notFoundMsg} className={"successMsg"} />
         ) : (
-          <Table responsive striped hover bordered>
+          <table>
             <thead>
               <tr>
                 {headers.map((header, index) => (
@@ -73,50 +83,42 @@ const MainPartnersTable = ({
               {data.map((el, index) => {
                 return (
                   <tr key={el.id}>
+                    <td>{index + 1}</td>
+                    <td>{el.name}</td>
                     <td>
-                      <div className="table-data">{index + 1}</div>
+                      <div
+                        className="table-img"
+                        style={{ backgroundImage: `url(${el.image})` }}
+                      ></div>
                     </td>
                     <td>
-                      <div className="table-data">{el.name}</div>
+                      <Link to={el.page_link}>Page Link</Link>
                     </td>
                     <td>
-                      <div className="table-data">
-                        <div
-                          className="table-img"
-                          style={{ backgroundImage: `url(${el.image})` }}
-                        ></div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="table-data">
-                        <Link to={el.page_link}>Page Link</Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="table-data">
-                        <div className="action-btns">
-                          <button
-                            className="main-btn delete-btn"
-                            onClick={() => {
-                              handelDelete(el.id);
-                            }}
-                          >
-                            Delete
-                          </button>
-                          <button
-                            className="main-btn edit-btn"
-                            onClick={() => handleEditPartner(el)}
-                          >
-                            Edit
-                          </button>
-                        </div>
+                      <div className="action-btns">
+                        <button
+                          className="main-btn delete-btn"
+                          onClick={() => handelDelete(el._id)}
+                          disabled={loading.loading}
+                        >
+                          {loading.loading && el._id === loading.id && (
+                            <MainSpinner />
+                          )}
+                          {el._id !== loading.id && "Delete"}{" "}
+                        </button>
+                        <button
+                          className="main-btn edit-btn"
+                          onClick={() => handleEditPartner(el)}
+                        >
+                          Edit
+                        </button>
                       </div>
                     </td>
                   </tr>
                 );
               })}
             </tbody>
-          </Table>
+          </table>
         )}
       </div>
 
@@ -137,6 +139,18 @@ const MainPartnersTable = ({
       />
     </>
   );
+};
+
+// Prop types validation
+MainPartnersTable.propTypes = {
+  headers: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired,
+  className: PropTypes.string,
+  refresh: PropTypes.func.isRequired,
+  setSuccessMsg: PropTypes.func.isRequired,
+  setErrorMsg: PropTypes.func.isRequired,
+  setNotFoundMsg: PropTypes.func.isRequired,
+  notFoundMsg: PropTypes.string,
 };
 
 export default MainPartnersTable;

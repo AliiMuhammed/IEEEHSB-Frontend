@@ -8,7 +8,7 @@ export const Admin = () => {
     <>
       <AdminNavbar />
       <section className="admin-section">
-        <Outlet />
+         <Outlet />
       </section>
       <AdminFooter />
     </>

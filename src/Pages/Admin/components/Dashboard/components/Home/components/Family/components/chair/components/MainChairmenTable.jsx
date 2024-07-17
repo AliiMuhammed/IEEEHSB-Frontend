@@ -89,10 +89,19 @@ const MainChairmenTable = ({
                     <td>{el.name}</td>
                     <td>{el.committee}</td>
                     <td>
-                      <Link to={el.github}>GitHub</Link>
+                      {el.github !== "N/A" ? (
+                        <Link to={el.github}>GitHub</Link>
+                      ) : (
+                        el.github
+                      )}
                     </td>
                     <td>
-                      <Link to={el.linkedin}>LinkedIn</Link>
+                    {el.github !== "N/A" ? (
+                        <Link to={el.linkedin}>LinkedIn</Link>
+                      ) : (
+                        el.linkedin
+                      )}
+                      
                     </td>
                     <td>{el.faculty}</td>
                     <td>{el.email}</td>

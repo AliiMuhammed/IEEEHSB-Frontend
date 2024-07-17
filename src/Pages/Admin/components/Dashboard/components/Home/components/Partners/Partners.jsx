@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import "./style/partners.css";
 import MainHeader from "./../../../../../../../../Shared/components/MainHeader";
 import MainPartnersTable from "./components/MainPartnersTable";
-import axios from "axios";
 import MainSuccess from "./../../../../../../../../Shared/components/MainSuccess";
 import MainError from "../../../../../../../../Shared/components/MainError";
+import http from "../../../../../../../../Helper/http";
+import MainSpinner from "../../../../../../../../Shared/components/MainSpinner";
 export const Partners = () => {
   const headers = ["Id", "Name", "Image", "Link", "Action"];
 
@@ -25,15 +26,23 @@ export const Partners = () => {
   useEffect(() => {
     if (partners.reload) {
       setPartners({ ...partners, loading: true });
-      axios
-        .get("http://localhost:3000/partners")
+      http
+        .GET("/partners")
         .then((res) => {
+          console.log(res.results);
           setPartners({
             ...partners,
             loading: false,
-            response: res.data,
+            response: res.results,
           });
           setErrorMsg("");
+          if (res.results.length === 0) {
+            setNotFoundMsg(
+              "There is no partners, you can add one from add button."
+            );
+          } else {
+            setNotFoundMsg("");
+          }
         })
         .catch((err) => {
           setPartners({
@@ -41,35 +50,26 @@ export const Partners = () => {
             loading: false,
           });
           setSuccessMsg("");
-          partners.response.length === 0 ? (
-            setNotFoundMsg(
-              "There is no partners, you can add one from add button."
-            )
-          ) : (
-            <></>
-          );
-
-          refreshTable();
         });
     }
   }, [partners.reload]);
 
   return (
-    
-      <section className="partners-section">
-        <MainHeader
-          title={"Our Partners"}
-          paragraph={"Here You can add, update, and delete any partner."}
-        />
-        <div className="container">
-          {/* error handling */}
-          {successMsg.length !== 0 && errorMsg.length === 0 && (
-            <MainSuccess msg={successMsg} className={"successMsg"} />
-          )}
-          {successMsg.length === 0 && errorMsg.length !== 0 && (
-            <MainError msg={errorMsg} className={"successMsg"} />
-          )}
-
+    <section className="partners-section">
+      <MainHeader
+        title={"Our Partners"}
+        paragraph={"Here You can add, update, and delete any partner."}
+      />
+      <div className="container">
+        {/* error handling */}
+        {successMsg.length !== 0 && errorMsg.length === 0 && (
+          <MainSuccess msg={successMsg} className={"successMsg"} />
+        )}
+        {successMsg.length === 0 && errorMsg.length !== 0 && (
+          <MainError msg={errorMsg} className={"successMsg"} />
+        )}
+        {partners.loading && <MainSpinner className={"table-spinner"} />}
+        {!partners.loading && (
           <MainPartnersTable
             headers={headers}
             data={partners.response}
@@ -80,9 +80,8 @@ export const Partners = () => {
             setNotFoundMsg={setNotFoundMsg}
             notFoundMsg={notFoundMsg}
           />
-          
-        </div>
-      </section>
-    
+        )}
+      </div>
+    </section>
   );
 };

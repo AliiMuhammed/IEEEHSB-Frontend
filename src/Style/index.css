@@ -11,6 +11,7 @@
     --main-transition: all 0.3s ease-in-out;
     --main-border-radius: 7px;
     --main-line-height: 1.5;
+    
 }
 
 ::selection {
