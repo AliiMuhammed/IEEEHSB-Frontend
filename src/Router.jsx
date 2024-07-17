@@ -3,7 +3,7 @@ import App from "./App";
 import NotFound from "./Pages/NotFound/NotFound";
 import { Admin } from "./Pages/Admin/Admin";
 import { Dashboard } from "./Pages/Admin/components/Dashboard/Dashboard";
-import { Home } from "./Pages/Admin/components/Dashboard/components/Home/Home";
+import { AdminHome } from "./Pages/Admin/components/Dashboard/components/Home/Home";
 import { Slogan } from "./Pages/Admin/components/Dashboard/components/Home/components/Slogan/Slogan";
 import Video from "./Pages/Admin/components/Dashboard/components/Home/components/Video/Video";
 import Family from "./Pages/Admin/components/Dashboard/components/Home/components/Family/Family";
@@ -13,11 +13,16 @@ import { Testimonials } from "./Pages/Admin/components/Dashboard/components/Home
 import Login from "./Pages/Admin Auth/Login/Login";
 import AdminGuest from "./Middleware/Admin/AdminGuest";
 import AdminDashboard from "./Middleware/Admin/AdminDashboard";
+import Home from "./Pages/Home/Home";
 export const router = createBrowserRouter([
   {
     path: "",
     element: <App />,
     children: [
+      {
+        path: "/",
+        element:<Home/>
+      },
       {
         element: <AdminDashboard />,
         children: [
@@ -31,7 +36,7 @@ export const router = createBrowserRouter([
                 children: [
                   {
                     path: "/admin/dashboard/home",
-                    element: <Home />,
+                    element: <AdminHome />,
                     children: [
                       {
                         path: "/admin/dashboard/home/slogan",
