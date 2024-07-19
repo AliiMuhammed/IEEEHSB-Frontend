@@ -1,17 +1,17 @@
 /* start variables */
 :root {
-    --main-font-color: #FFF;
-    --second-font-color: #3e648b;
+    --main-font-color: #182b55;
+    --second-font-color: #fff;
     --main-p-color: #c0c0c0;
     --hover-color: #13b5e4;
     --main-bg: #182b55;
-    --second-bg: #a2a8b8;
+    --second-bg: #d7dee3;
     --btns-main-bg-color: #3e648b;
     --error-color: rgb(173, 0, 0);
     --main-transition: all 0.3s ease-in-out;
     --main-border-radius: 7px;
     --main-line-height: 1.5;
-    
+
 }
 
 ::selection {
@@ -33,7 +33,9 @@ body {
     /* Noncompliant; there is no generic font family in the list */
     margin: 0;
     padding: 0;
+    background-color: var(--second-bg);
     color: var(--main-font-color);
+    cursor: url("../Assets/logos/cursorlogo.png"), auto;
 }
 
 .container {
