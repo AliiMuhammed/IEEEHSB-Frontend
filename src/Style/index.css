@@ -1,4 +1,6 @@
 /* start variables */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
 :root {
     --main-font-color: #182b55;
     --second-font-color: #fff;
@@ -15,7 +17,7 @@
 }
 
 ::selection {
-    color: var(--main-font-color);
+    color: var(--second-font-color);
     background: var(--hover-color);
 }
 
@@ -29,7 +31,7 @@
 }
 
 body {
-    font-family: "Cairo";
+    font-family: "Cairo", sans-serif;
     /* Noncompliant; there is no generic font family in the list */
     margin: 0;
     padding: 0;
@@ -46,7 +48,7 @@ body {
 /* Media query for small screens  */
 @media screen and (min-width: 768px) {
     .container {
-        width: 750px;
+        width: 90%;
 
     }
 }
@@ -54,7 +56,7 @@ body {
 /* Media query for medium screens  */
 @media screen and (min-width: 992px) {
     .container {
-        width: 970px;
+        width: 85%;
 
     }
 }
@@ -63,7 +65,7 @@ body {
 
 @media screen and (min-width:1200px) {
     .container {
-        width: 1200px;
+        width: 80%;
 
     }
 }

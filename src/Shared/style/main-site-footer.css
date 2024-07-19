@@ -1,17 +1,23 @@
 .main-footer {
     width: 100%;
-    height: 22rem;
     margin: 0;
-    display: grid;
-    grid-template-rows: 90% 10%;
+    padding: 3rem 0;
     background-color: var(--main-bg);
     color: var(--second-font-color);
+
+}
+
+.main-footer .container {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .footer-up {
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    padding: 2rem 11rem;
+    grid-template-columns: repeat(4, 1fr);
+    padding-bottom: 3rem;
     position: relative;
 }
 
@@ -26,37 +32,22 @@
 }
 
 .footer-down {
-    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.footer-links {
-    height: 100%;
-    display: grid;
-    justify-items: center;
-    align-content: center;
-}
-
-.footer-contacts {
-    height: 100%;
-    display: grid;
-    justify-items: center;
-    align-content: center;
-    font-size: 1rem;
-}
-
-.footer-resource {
-    height: 100%;
-    display: grid;
-    justify-items: center;
-    align-content: center;
-}
-
+.footer-links,
+.footer-resource,
+.footer-contacts,
 .first-subfooter {
-    height: 100%;
-    display: grid;
-    justify-items: center;
-    align-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+
 
 .first-subfooter img {
     width: 250px;
@@ -78,6 +69,7 @@
     -ms-transition: var(--main-transition);
     -o-transition: var(--main-transition);
 }
+
 .first-subfooter .social-icons a:hover {
     color: var(--hover-color);
 }
@@ -88,8 +80,28 @@
     font-weight: 600;
 }
 
-.footer-down {
-    color: var(--main-bg);
-    margin: auto;
-    padding: 6px 0;
+
+
+/* small */
+@media only screen and (max-width: 767px) {}
+
+/* medium */
+
+@media only screen and (max-width: 991px) {
+    .footer-up {
+        grid-template-columns: 1fr;
+        padding-bottom: 2rem;
+
+    }
+
+    .footer-links,
+    .footer-resource,
+    .footer-contacts,
+    .first-subfooter {
+        margin-bottom: 2rem;
+    }
 }
+
+/* large */
+
+@media only screen and (min-width: 992px) {}
