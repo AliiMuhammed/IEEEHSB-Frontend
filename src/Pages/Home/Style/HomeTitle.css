@@ -1,0 +1,22 @@
+.home-title {
+  color: var(--main-p-color);
+  font-weight: 600;
+  position: relative;
+  font-size: x-large;
+  display: inline-block;
+  width: auto;
+}
+
+.home-title span {
+  color: var(--second-font-color);
+}
+
+.home-title::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 50%;
+  background-color: var(--main-p-color);
+  top: 33px;
+  left: 0px;
+}
