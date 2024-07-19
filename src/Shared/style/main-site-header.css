@@ -28,3 +28,21 @@
 .main-title:hover::before {
   width: 100%;
 }
+
+/* small */
+@media only screen and (max-width: 767px) {
+  .main-title {
+    font-size: 2rem;
+    margin: 3rem 0;
+  }
+}
+
+/* medium */
+
+@media only screen and (min-width: 768px)and (max-width: 991px) {
+  .main-title {
+    font-size: 2.5rem;
+    margin: 3.5rem 0;
+  }
+}
+
