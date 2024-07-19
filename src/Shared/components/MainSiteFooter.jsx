@@ -1,17 +1,35 @@
 import React from "react";
-import "../Style/HomeFooter.css";
+import "../style/main-site-footer.css";
+import logo from "../../Assets/logos/horizontal logo.png";
+import { Link } from "react-router-dom";
+import {
+    FaFacebookSquare,
+  FaInstagram,
+  FaLinkedin,
+  FaYoutube,
+} from "react-icons/fa";
 
-const HomeFooter = () => {
+const MainSiteFooter = () => {
   return (
-    <div className="main-home-footer">
-      <div className="home-footer-up">
+    <div className="main-footer">
+      <div className="footer-up">
         <div className="first-subfooter">
-          <img
-            src="/IEEEHSB-Frontend/src/Assets/logos/horizontal-logo.png"
-            alt="IEEE-Logo"
-          />
+          <img src={logo} alt="IEEE-Logo" />
           <p>Follow us on Social Media</p>
-          <div className="social-icons">& & & &</div>
+          <div className="social-icons">
+            <Link to="https://www.facebook.com/ieeehsb/">
+              <FaFacebookSquare />
+            </Link>
+            <Link to="https://www.facebook.com/ieeehsb/">
+              <FaInstagram />
+            </Link>
+            <Link to="https://www.facebook.com/ieeehsb/">
+              <FaLinkedin />
+            </Link>
+            <Link to="https://www.facebook.com/ieeehsb/">
+              <FaYoutube />
+            </Link>
+          </div>
         </div>
         <div className="footer-links">
           <div className="footer-title">Links</div>
@@ -39,9 +57,9 @@ const HomeFooter = () => {
           </div>
         </div>
       </div>
-      <div className="home-footer-down">copyrights &copy; 2024.</div>
+      <div className="footer-down">copyrights &copy; 2024.</div>
     </div>
   );
 };
 
-export default HomeFooter;
+export default MainSiteFooter;

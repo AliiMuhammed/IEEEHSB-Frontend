@@ -19,4 +19,12 @@
   background-color: var(--btns-main-bg-color);
   bottom: 0%;
   left: 0px;
+  transition: var(--main-transition);
+  -webkit-transition: var(--main-transition);
+  -moz-transition: var(--main-transition);
+  -ms-transition: var(--main-transition);
+  -o-transition: var(--main-transition);
+}
+.main-title:hover::before {
+  width: 100%;
 }

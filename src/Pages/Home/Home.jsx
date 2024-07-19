@@ -6,8 +6,6 @@ const Home = () => {
     <section className="home-section">
       <div className="container">
         <MainSiteHeader title={"Home"} />
-        <MainSiteHeader title={"Values"} />
-        <MainSiteHeader title={"achievement"} />
       </div>
     </section>
   );
