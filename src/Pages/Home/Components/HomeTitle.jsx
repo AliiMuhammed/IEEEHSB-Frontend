@@ -1,10 +1,10 @@
 import React from "react";
 import "../Style/HomeTitle.css";
 
-const HomeTitle = () => {
+const HomeTitle = (props) => {
   return (
     <div className="home-title">
-      Our <span>Home</span>
+      {props.firstWord} <span>{props.secondWord}</span>
     </div>
   );
 };
