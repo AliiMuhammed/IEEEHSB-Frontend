@@ -1,7 +1,8 @@
 import React from "react";
-import HomeTitle from "../HomeTitle";
 import ReactCardSlider from "./Components/ChapterSlider";
-import "../../Style/Slider.css";
+import "../Chapters/style/Slider.css";
+import MainSiteHeader from "../../../../Shared/components/MainSiteHeader";
+import { IoPersonOutline } from "react-icons/io5";
 
 const Chapters = () => {
   const sliderClick = (slider) => {
@@ -37,8 +38,9 @@ const Chapters = () => {
 
   return (
     <div className="chapters-section">
-      <HomeTitle firstWord="our" secondWord="Chapters" />
+      <MainSiteHeader title={"Chapters"} />
       <div className="chapters-content">
+      <IoPersonOutline />
         <ReactCardSlider slides={slides} />
       </div>
     </div>

@@ -14,6 +14,7 @@ import Login from "./Pages/Admin Auth/Login/Login";
 import AdminGuest from "./Middleware/Admin/AdminGuest";
 import AdminDashboard from "./Middleware/Admin/AdminDashboard";
 import Home from "./Pages/Home/Home";
+import AboutUs from "./Pages/About/AboutUs";
 export const router = createBrowserRouter([
   {
     path: "",
@@ -21,7 +22,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element:<Home/>
+        element: <Home />,
+      },
+      {
+        path: "/aboutUs",
+        element: <AboutUs />,
       },
       {
         element: <AdminDashboard />,
