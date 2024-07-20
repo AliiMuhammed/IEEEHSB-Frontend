@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import "../../../Style/Slider.css";
+import "../style/Slider.css";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const ReactCardSlider = (props) => {

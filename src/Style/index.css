@@ -1,197 +1,199 @@
 /* start variables */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
 
 :root {
-    --main-font-color: #182b55;
-    --second-font-color: #fff;
-    --main-p-color: #c0c0c0;
-    --hover-color: #13b5e4;
-    --main-bg: #182b55;
-    --second-bg: #d7dee3;
-    --btns-main-bg-color: #3e648b;
-    --error-color: rgb(173, 0, 0);
-    --main-transition: all 0.3s ease-in-out;
-    --main-border-radius: 7px;
-    --main-line-height: 1.5;
-
+  --main-font-color: #182b55;
+  --second-font-color: #fff;
+  --main-p-color: #c0c0c0;
+  --hover-color: #13b5e4;
+  --main-bg: #182b55;
+  --second-bg: #d7dee3;
+  --btns-main-bg-color: #3e648b;
+  --error-color: rgb(173, 0, 0);
+  --main-transition: all 0.3s ease-in-out;
+  --main-border-radius: 7px;
+  --main-line-height: 1.5;
 }
 
 ::selection {
-    color: var(--second-font-color);
-    background: var(--hover-color);
+  color: var(--second-font-color);
+  background: var(--hover-color);
 }
 
 /* end variables */
 
 /*Start glopal rules */
 * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Cairo", sans-serif;
-    /* Noncompliant; there is no generic font family in the list */
-    margin: 0;
-    padding: 0;
-    background-color: var(--second-bg);
-    color: var(--main-font-color);
-    cursor: url("../Assets/logos/cursorlogo.png"), auto;
+  font-family: "Cairo", sans-serif;
+  /* Noncompliant; there is no generic font family in the list */
+  margin: 0;
+  padding: 0;
+  background-color: var(--second-bg);
+  color: var(--main-font-color);
+  cursor: url("../Assets/logos/cursorlogo.png"), auto;
 }
 
 .container {
-    margin: 0 auto;
-    padding: 0 15px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 /* Media query for small screens  */
 @media screen and (min-width: 768px) {
-    .container {
-        width: 90%;
-
-    }
+  .container {
+    width: 90%;
+  }
 }
 
 /* Media query for medium screens  */
 @media screen and (min-width: 992px) {
-    .container {
-        width: 85%;
-
-    }
+  .container {
+    width: 85%;
+  }
 }
 
 /* Media query for large screens  */
 
-@media screen and (min-width:1200px) {
-    .container {
-        width: 80%;
-
-    }
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 80%;
+  }
 }
 
 ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 a {
-    text-decoration: none;
-
+  text-decoration: none;
 }
 
 section {
-    margin: 6rem 0;
+  margin: 6rem 0;
 }
 
 .main-btn {
-    padding: 1rem 2rem;
-    background-color: var(--second-font-color);
-    color: var(--main-font-color);
-    font-size: 1.1rem;
-    border: 2px solid transparent;
-    outline: none;
-    border-radius: var(--main-border-radius);
-    -webkit-border-radius: var(--main-border-radius);
-    -moz-border-radius: var(--main-border-radius);
-    -ms-border-radius: var(--main-border-radius);
-    -o-border-radius: var(--main-border-radius);
-    transition: var(--main-transition);
-    -webkit-transition: var(--main-transition);
-    -moz-transition: var(--main-transition);
-    -ms-transition: var(--main-transition);
-    -o-transition: var(--main-transition);
-    cursor: pointer;
-    font-weight: 600;
+  padding: 1rem 2rem;
+  background-color: var(--second-font-color);
+  color: var(--main-font-color);
+  font-size: 1.1rem;
+  border: 2px solid transparent;
+  outline: none;
+  border-radius: var(--main-border-radius);
+  -webkit-border-radius: var(--main-border-radius);
+  -moz-border-radius: var(--main-border-radius);
+  -ms-border-radius: var(--main-border-radius);
+  -o-border-radius: var(--main-border-radius);
+  transition: var(--main-transition);
+  -webkit-transition: var(--main-transition);
+  -moz-transition: var(--main-transition);
+  -ms-transition: var(--main-transition);
+  -o-transition: var(--main-transition);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.main-btn.sm {
+  font-size: 1rem;
+  padding: 0.5rem 2rem;
 }
 
 .main-btn:hover {
-    background-color: var(--hover-color);
-    border-color: var(--hover-color);
+  background-color: var(--hover-color);
+  border-color: var(--hover-color);
+  color: var(--second-font-color);
 }
 
 /* small */
 @media only screen and (max-width: 767px) {
-    .main-btn {
-        padding: 0.5rem 1rem;
-    }
+  .main-btn {
+    padding: 0.5rem 1rem;
+  }
 }
 
 .action-btns {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .action-btns .main-btn {
-    font-size: 1rem;
-    padding: 0.5rem 2rem;
+  font-size: 1rem;
+  padding: 0.5rem 2rem;
 }
 
 .action-btns .main-btn.delete-btn {
-    background-color: var(--error-color);
-    margin-right: 1rem;
+  background-color: var(--error-color);
+  margin-right: 1rem;
 }
 
 .action-btns .main-btn.delete-btn:hover {
-    background-color: var(--hover-color);
+  background-color: var(--hover-color);
 }
 
 .main-btn.add-btn {
-    padding: 0.5rem 2rem;
+  padding: 0.5rem 2rem;
 }
 
 /* small */
 @media only screen and (max-width: 767px) {
-    .main-btn.add-btn {
-        padding: 0.5rem 1rem;
-    }
+  .main-btn.add-btn {
+    padding: 0.5rem 1rem;
+  }
 }
 
 .main-modal {
-    color: var(--second-font-color);
+  color: var(--second-font-color);
 }
 
 .form-video {
-    width: 100%;
+  width: 100%;
 }
 
-.form-video>div {
-    width: 100% !important;
+.form-video > div {
+  width: 100% !important;
 }
 
 .main-spinner.btn-spinner {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .alert-danger.successMsg,
 .alert-success.successMsg {
-    text-align: center;
-    margin-top: 2rem;
-    width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  width: 100%;
 }
 
-
 .main-spinner.table-spinner {
-    background-color: var(--main-bg);
-    width: 60px;
-    height: 60px;
+  background-color: var(--main-bg);
+  width: 60px;
+  height: 60px;
 }
 
 /*end glopal rules */
 
-
 /* main media queries */
 
 /* small */
-@media only screen and (max-width: 767px) {}
+@media only screen and (max-width: 767px) {
+}
 
 /* medium */
 
-@media only screen and (min-width: 768px)and (max-width: 991px) {}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+}
 
 /* large */
 
-@media only screen and (min-width: 992px) {}
+@media only screen and (min-width: 992px) {
+}

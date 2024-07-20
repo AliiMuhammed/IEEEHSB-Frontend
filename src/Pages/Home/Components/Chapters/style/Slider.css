@@ -85,12 +85,12 @@
 }
 
 .slider-card-title {
-  color: var(--second-font-color);
+  color: var(--main-font-color);
   font-weight: 600;
 }
 
 .slider-card-description {
-  color: var(--second-font-color);
+  color: var(--main-font-color);
 }
 
 .chapters-content {
