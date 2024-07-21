@@ -13,6 +13,15 @@
   --main-transition: all 0.3s ease-in-out;
   --main-border-radius: 7px;
   --main-line-height: 1.5;
+  --main-Comsocchapter-color: #414141;
+  --second-Comsocchapter-color: lightgray;
+  --main-Peschapter-color: #81ab44;
+  --second-Peschapter-Color: #a4d957;
+  --main-RasChapter-color: #7a0d1d;
+  --second-RasChapter-color: #2e050b;
+  --main-WieChapter-color: #9863b3;
+  --second-WieChapter-color: #381349;
+
 }
 
 ::selection {
@@ -158,7 +167,7 @@ section {
   width: 100%;
 }
 
-.form-video > div {
+.form-video>div {
   width: 100% !important;
 }
 
@@ -185,15 +194,12 @@ section {
 /* main media queries */
 
 /* small */
-@media only screen and (max-width: 767px) {
-}
+@media only screen and (max-width: 767px) {}
 
 /* medium */
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-}
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
 
 /* large */
 
-@media only screen and (min-width: 992px) {
-}
+@media only screen and (min-width: 992px) {}
