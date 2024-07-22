@@ -53,7 +53,7 @@ const AchievementCard = ({ targetNumber, duration, text, resetTrigger }) => {
       <div className="progress-circle">
         <CircularProgressbar
           value={progress}
-          maxValue={100} 
+          maxValue={number} 
           styles={buildStyles({
             trailColor: "#d6d6d6",
           })}

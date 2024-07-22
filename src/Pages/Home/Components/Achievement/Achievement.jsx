@@ -10,7 +10,6 @@ const Achievement = () => {
     const handleScroll = () => {
       setResetTrigger((prev) => prev + 1);
     };
-    console.log(resetTrigger);
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -24,7 +23,7 @@ const Achievement = () => {
         <MainSiteHeader title={"Achievements"} />
         <div className="achievement-cards">
           <AchievementCard
-            targetNumber={"52"}
+            targetNumber={"52k"}
             duration={3}
             text={"Event"}
             resetTrigger={resetTrigger}
