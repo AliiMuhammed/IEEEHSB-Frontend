@@ -1,0 +1,142 @@
+.chapter-card-img img {
+    padding: 1rem;
+}
+
+.chapter-card {
+    height: 24rem;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 60% 40%;
+    transition: var(--main-transition);
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 20px 25px 9px, rgb(0 0 0 / 30%) 0px 10px 10px -5px;
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.chapter-card:hover {
+    transform: translateY(-10px);
+    box-shadow: rgb(0 0 0 / 15%) 0px 30px 35px 10px, rgb(0 0 0 / 50%) 0px 10px 10px -5px;
+}
+
+.chapter-card.ras {
+    background: var(--main-RasChapter-color);
+}
+
+.chapter-card-img.ras {
+    background: var(--second-RasChapter-color);
+}
+
+.chapter-card.comsoc {
+    background: var(--main-Comsocchapter-color);
+}
+
+.chapter-card-img.comsoc {
+    background: var(--second-Comsocchapter-color);
+}
+
+.chapter-card.pes {
+    background: var(--main-Peschapter-color);
+}
+
+.chapter-card-img.pes {
+    background: var(--second-Peschapter-Color);
+}
+
+.chapter-card.wie {
+    background: var(--main-WieChapter-color);
+}
+
+.chapter-card-img.wie {
+    background: var(--second-WieChapter-color);
+}
+
+.chapter-card-img {
+    height: 80%;
+    width: 85%;
+    margin: auto;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.chapter-card-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.chapter-card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--second-font-color);
+}
+
+.chapter-card-des svg {
+    margin-right: 5px;
+}
+
+.chapter-card-content .main-btn.chapter-btn {
+    padding: .5rem 5rem;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--second-font-color);
+    border-radius: 10px;
+    text-transform: uppercase;
+    overflow: hidden;
+    position: relative;
+}
+
+.chapter-card-content .main-btn.chapter-btn.ras {
+    background: var(--second-RasChapter-color);
+}
+
+.chapter-card-content .main-btn.chapter-btn.ras:hover {
+    background-color: transparent;
+    border-color: var(--second-RasChapter-color);
+}
+
+.chapter-card-content .main-btn.chapter-btn.pes {
+    background: var(--second-Peschapter-Color);
+}
+
+.chapter-card-content .main-btn.chapter-btn.pes:hover {
+    background-color: transparent;
+    border-color: var(--second-Peschapter-Color);
+}
+
+.chapter-card-content .main-btn.chapter-btn.comsoc {
+    background: var(--second-Comsocchapter-color);
+}
+
+.chapter-card-content .main-btn.chapter-btn.comsoc:hover {
+    background-color: transparent;
+    border-color: var(--second-Comsocchapter-color);
+}
+
+.chapter-card-content .main-btn.chapter-btn.wie {
+    background: var(--second-WieChapter-color);
+}
+
+.chapter-card-content .main-btn.chapter-btn.wie:hover {
+    background-color: transparent;
+    border-color: var(--second-WieChapter-color);
+}
+
+.chapter-card-des {
+    margin-bottom: 2rem;
+    color: var(--second-font-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

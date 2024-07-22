@@ -14,7 +14,7 @@
   --main-border-radius: 7px;
   --main-line-height: 1.5;
   --main-Comsocchapter-color: #414141;
-  --second-Comsocchapter-color: lightgray;
+  --second-Comsocchapter-color: #b4b4b4;
   --main-Peschapter-color: #81ab44;
   --second-Peschapter-Color: #a4d957;
   --main-RasChapter-color: #7a0d1d;
@@ -86,7 +86,7 @@ a {
 }
 
 section {
-  margin: 6rem 0;
+  margin: 7rem 0;
 }
 
 .main-btn {

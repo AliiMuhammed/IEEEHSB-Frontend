@@ -1,0 +1,59 @@
+.achievement-section .container .achievement-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    position: relative;
+    gap: 2rem;
+    margin-top: 6rem;
+    justify-items: center;
+    padding: 2rem;
+}
+
+.achievement-section .container .achievement-cards .achievement-bg {
+    background-image: url(../../../../../Assets/home/achivement.jpg);
+    background-size: cover;
+    background-position: center;
+    filter: saturate(0%);
+    opacity: 0.3;
+    position: absolute;
+    width: 100%;
+    height: 20rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+    -webkit-filter: saturate(0%);
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+
+.achievement-section .container .achievement-cards:hover .achievement-bg {
+    filter: saturate(50%);
+    opacity: 1;
+    -webkit-filter: saturate(50%);
+}
+
+@media only screen and (max-width: 991px) {
+    .achievement-section .container .achievement-cards .achievement-bg {
+        background-color: var(--main-font-color);
+        background-image: none;
+        height: 100%;
+        opacity: 1;
+        filter: none;
+    }
+
+    .achievement-section .container .achievement-cards {
+        margin-top: 0rem;
+    }
+}
