@@ -1,95 +1,104 @@
 .hero-section {
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .hero-section .hero-bg {
-    background-color: var(--btns-main-bg-color);
-    width: 100%;
-    height: 45%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: var(--btns-main-bg-color);
+  width: 100%;
+  height: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-section .container {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: fit-content;
-    padding: 3rem 0;
-    color: var(--second-font-color);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  padding: 3rem 0;
+  color: var(--second-font-color);
 }
 
 .text-container {
-    max-width: 50%;
-    max-width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .text-container h1 {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 .text-container p {
-    font-size: 1.2rem;
-    margin: 20px 0;
+  font-size: 1.2rem;
+  margin: 20px 0;
 }
 
-
-
-
 .logo {
-    width: 25rem;
-    height: 25rem;
-    border-radius: 50%;
+  width: 25rem;
+  height: 25rem;
+  border-radius: 50%;
 }
 
 .main-btn.join-btn {
-    margin-top: 1rem;
-    padding: .5rem 3.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 3.5rem;
 }
 
 @keyframes combinedAnimation {
-    0% {
-        transform: translateX(100%) rotate(0deg);
-        -webkit-transform: translateX(100%) rotate(0deg);
-        -moz-transform: translateX(100%) rotate(0deg);
-        -ms-transform: translateX(100%) rotate(0deg);
-        -o-transform: translateX(100%) rotate(0deg);
-}
+  0% {
+    transform: translateX(100%) rotate(0deg);
+    -webkit-transform: translateX(100%) rotate(0deg);
+    -moz-transform: translateX(100%) rotate(0deg);
+    -ms-transform: translateX(100%) rotate(0deg);
+    -o-transform: translateX(100%) rotate(0deg);
+  }
 
-    100% {
-        transform: translateX(0%) rotate(-360deg);
-        -webkit-transform: translateX(0%) rotate(-360deg);
-        -moz-transform: translateX(0%) rotate(-360deg);
-        -ms-transform: translateX(0%) rotate(-360deg);
-        -o-transform: translateX(0%) rotate(-360deg);
-    }
+  100% {
+    transform: translateX(0%) rotate(-360deg);
+    -webkit-transform: translateX(0%) rotate(-360deg);
+    -moz-transform: translateX(0%) rotate(-360deg);
+    -ms-transform: translateX(0%) rotate(-360deg);
+    -o-transform: translateX(0%) rotate(-360deg);
+  }
 }
 
 .logo-container {
-    box-shadow: inset 0px 0px 25px 8px #182b557a;
-    background-color: var(--btns-main-bg-color);
-    border-radius: 50%;
-    padding: 3rem;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: combinedAnimation 2s linear;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    right: 0;
-    -webkit-animation: combinedAnimation 2s linear;
+  box-shadow: inset 0px 0px 25px 8px #182b557a;
+  background-color: var(--btns-main-bg-color);
+  border-radius: 50%;
+  padding: 3rem;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: combinedAnimation 2s linear;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  right: 0;
+  -webkit-animation: combinedAnimation 2s linear;
+}
+
+@keyframes moveRight {
+  0% {
+    transform: translateX(0%) rotate(-360deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(0deg);
+  }
+}
+
+.animate-logo {
+  animation: moveRight 2s linear forwards;
 }
