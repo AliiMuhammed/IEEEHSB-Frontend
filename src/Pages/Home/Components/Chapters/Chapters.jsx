@@ -1,37 +1,48 @@
 import React from "react";
 import MainSiteHeader from "../../../../Shared/components/MainSiteHeader";
-import { IoPersonOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
 import ras from "../../../../Assets/logos/Logos/asa.png";
+import comsoc from "../../../../Assets/logos/Logos/ComSoc-01.png";
+import wie from "../../../../Assets/logos/Logos/WIE LOGO transparent 2.png";
+import pes from "../../../../Assets/logos/Logos/w.png";
 import "./style/Chapter.css";
+import ChapterCard from "./components/ChapterCard";
 const Chapters = () => {
   return (
-    <div className="chapters-section">
+    <section className="chapters-section">
       <div className="container">
         <MainSiteHeader title={"Chapters"} />
         <div className="chapters-content">
-          {/* ------------------Card------------------------------------------------ */}
-          <div className="chapter-card ">
-            <div className="chapter-card-img">
-              <img src={ras} alt="RAS" />
-            </div>
-            <div className="chapter-card-content">
-              <div className="chapter-card-title">RAS</div>
-              <div className="chapter-card-des">
-                <IoPersonOutline />
-                More than 100 Volanteer
-              </div>
-              <Link to="/aboutUs" className="main-btn chapter-btn">
-                <div className="chapter-button">
-                  <span className="txt1">discover</span>
-                  <span className="txt2">read more</span>
-                </div>
-              </Link>
-            </div>
-          </div>
+          <ChapterCard
+            chapterImage={ras}
+            classname={"ras"}
+            number={100}
+            link={"/aboutUs"}
+            chapterName={"RAS Chapter"}
+          />
+          <ChapterCard
+            chapterImage={pes}
+            classname={"pes"}
+            number={100}
+            link={"/aboutUs"}
+            chapterName={"PES Chapter"}
+          />
+          <ChapterCard
+            chapterImage={comsoc}
+            classname={"comsoc"}
+            number={100}
+            link={"/aboutUs"}
+            chapterName={"COMSOC Chapter"}
+          />
+          <ChapterCard
+            chapterImage={wie}
+            classname={"wie"}
+            number={100}
+            link={"/aboutUs"}
+            chapterName={"WIE Affinty group"}
+          />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
