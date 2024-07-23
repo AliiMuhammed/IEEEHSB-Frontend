@@ -45,7 +45,7 @@ body {
   padding: 0;
   background-color: var(--second-bg);
   color: var(--main-font-color);
-  cursor: url("../Assets/logos/cursorlogo.png"), auto;
+  cursor: url("../Assets/logos/cursorlogo2.png"), auto;
 }
 
 .container {

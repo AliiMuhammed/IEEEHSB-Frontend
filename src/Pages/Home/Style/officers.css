@@ -1,0 +1,14 @@
+.officers-section .container .officers-cards {
+    display: flex;
+    gap: 3rem;
+    justify-items: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 767px) {
+    .officers-section .container .officers-cards {
+        gap: 1rem;
+    }
+}
