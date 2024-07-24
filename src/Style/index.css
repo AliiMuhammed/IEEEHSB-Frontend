@@ -6,7 +6,7 @@
   --second-font-color: #fff;
   --main-p-color: #c0c0c0;
   --hover-color: #13b5e4;
-  --main-bg: #182b55;
+  --main-bg: rgb(24, 43, 85);
   --second-bg: #d7dee3;
   --btns-main-bg-color: #3e648b;
   --error-color: rgb(173, 0, 0);
@@ -108,6 +108,14 @@ section {
   -o-transition: var(--main-transition);
   cursor: pointer;
   font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-btn:disabled {
+  background-color: var(--btns-main-bg-color);
 }
 
 .main-btn.sm {
@@ -187,6 +195,12 @@ section {
   background-color: var(--main-bg);
   width: 60px;
   height: 60px;
+}
+
+.error-msg {
+  color: var(--error-color);
+  font-size: 1rem;
+  margin-left: 1rem;
 }
 
 /*end glopal rules */
