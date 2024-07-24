@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { openToast } from "../../../Redux/Slices/toastSlice";
 import MyToast from "../../../Shared/components/MyToast";
 import http from "../../../Helper/http";
+import { useNavigate } from "react-router";
 
 const OTP = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ const OTP = () => {
   });
   const [error, setError] = useState("");
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   useEffect(() => {
     // Retrieve the email from session storage
     const storedEmail = sessionStorage.getItem("email");
@@ -80,6 +81,9 @@ const OTP = () => {
         console.log(response);
         setLoading(false);
         dispatch(openToast({ msg: "Verified", type: "success" }));
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
       })
       .catch((error) => {
         dispatch(openToast({ msg: "Something went wrong", type: "error" }));
