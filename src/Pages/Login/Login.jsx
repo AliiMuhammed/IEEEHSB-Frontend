@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./style/login.css";
 import loginImg from "../../Assets/login/login-img.jpg";
 import logo from "../../Assets/logos/horizontal logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import http from "../../Helper/http";
 import MainSpinner from "../../Shared/components/MainSpinner";
@@ -17,6 +17,7 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const validateForm = () => {
     const newErrors = {};
     if (!email) {
@@ -36,23 +37,23 @@ const Login = () => {
     event.preventDefault();
     if (validateForm()) {
       setLoading(true);
-      console.log({ email, password });
       http
-        .POST("/users/login", { email, password })
+        .POST("/admins/login", { email, password })
         .then((response) => {
-          console.log(response);
           setLoading(false);
-          console.log("Dispatching success toast");
+          // Save email to session storage on successful login
+          sessionStorage.setItem("email", email);
           dispatch(
             openToast({
               msg: "Verification code sent to your email",
               type: "success",
             })
           );
+          setTimeout(() => {
+            navigate("/verification");
+          }, 2000);
         })
         .catch((error) => {
-          console.log(error);
-          console.log("Dispatching error toast");
           dispatch(openToast({ msg: "Something went wrong", type: "error" }));
           setLoading(false);
         });

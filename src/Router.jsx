@@ -15,6 +15,7 @@ import AdminDashboard from "./Middleware/Admin/AdminDashboard";
 import Home from "./Pages/Home/Home";
 import AboutUs from "./Pages/About/AboutUs";
 import Login from "./Pages/Login/Login";
+import OTP from "./Pages/Login/components/OTP";
 export const router = createBrowserRouter([
   {
     path: "",
@@ -81,6 +82,9 @@ export const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },{
+    path: "/verification",
+    element: <OTP/>,
   },
   {
     element: <AdminGuest />,
