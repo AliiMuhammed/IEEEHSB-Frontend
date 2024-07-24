@@ -4,9 +4,9 @@ import { getAuthUser } from "./Storage";
 const http = {
   GET: async (url, config = {}) => {
     try {
-      const token = await getAuthUser(); // Wait for the token to be retrieved
+      const token = await getAuthUser(); 
       if (token) {
-        axios.defaults.headers.common["Authorization"] = `IEEE ${token.token}`;
+        axios.defaults.headers.common["Authorization"] = `HSB_ADMIN ${token.token}`;
       }
 
       const response = await axios.get(url, config);
@@ -20,9 +20,9 @@ const http = {
 
   POST: async (url, data = {}, config = {}) => {
     try {
-      const token = await getAuthUser(); // Wait for the token to be retrieved
+      const token = await getAuthUser(); 
       if (token) {
-        axios.defaults.headers.common["Authorization"] = `IEEE ${token.token}`;
+        axios.defaults.headers.common["Authorization"] = `HSB_ADMIN ${token.token}`;
       }
 
       const response = await axios.post(url, data, config);
@@ -36,9 +36,9 @@ const http = {
 
   PUT: async (url, data = {}, config = {}) => {
     try {
-      const token = await getAuthUser(); // Wait for the token to be retrieved
+      const token = await getAuthUser(); 
       if (token) {
-        axios.defaults.headers.common["Authorization"] = `IEEE ${token.token}`;
+        axios.defaults.headers.common["Authorization"] = `HSB_ADMIN ${token.token}`;
       }
 
       const response = await axios.put(url, data, config);
@@ -52,9 +52,9 @@ const http = {
 
   PATCH: async (url, data = {}, config = {}) => {
     try {
-      const token = await getAuthUser(); // Wait for the token to be retrieved
+      const token = await getAuthUser(); 
       if (token) {
-        axios.defaults.headers.common["Authorization"] = `IEEE ${token.token}`;
+        axios.defaults.headers.common["Authorization"] = `HSB_ADMIN ${token.token}`;
       }
 
       const response = await axios.patch(url, data, config);
@@ -68,9 +68,9 @@ const http = {
 
   DELETE: async (url, config = {}) => {
     try {
-      const token = await getAuthUser(); // Wait for the token to be retrieved
+      const token = await getAuthUser(); 
       if (token) {
-        axios.defaults.headers.common["Authorization"] = `IEEE ${token.token}`;
+        axios.defaults.headers.common["Authorization"] = `HSB_ADMIN ${token.token}`;
       }
 
       const response = await axios.delete(url, config);
@@ -83,7 +83,7 @@ const http = {
   },
 };
 
-axios.defaults.baseURL = "https://ieee-backend-06597876c603.herokuapp.com";
+axios.defaults.baseURL = "https://ieee-hsb-api-1fe952999659.herokuapp.com";
 axios.defaults.withCredentials = true;
 
 export default http;

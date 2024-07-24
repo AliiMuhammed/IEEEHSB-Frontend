@@ -10,11 +10,11 @@ import Family from "./Pages/Admin/components/Dashboard/components/Home/component
 import Achieveiments from "./Pages/Admin/components/Dashboard/components/Home/components/Achievements/Achieveiments";
 import { Partners } from "./Pages/Admin/components/Dashboard/components/Home/components/Partners/Partners";
 import { Testimonials } from "./Pages/Admin/components/Dashboard/components/Home/components/Testimonials/Testimonials";
-import Login from "./Pages/Admin Auth/Login/Login";
 import AdminGuest from "./Middleware/Admin/AdminGuest";
 import AdminDashboard from "./Middleware/Admin/AdminDashboard";
 import Home from "./Pages/Home/Home";
 import AboutUs from "./Pages/About/AboutUs";
+import Login from "./Pages/Login/Login";
 export const router = createBrowserRouter([
   {
     path: "",
@@ -77,6 +77,10 @@ export const router = createBrowserRouter([
       },
     ],
     errorElement: <NotFound />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
   {
     element: <AdminGuest />,
