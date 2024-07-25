@@ -12,7 +12,7 @@ const ChapterCard = ({
   return (
     <div className={`chapter-card ${classname}`}>
       <div className={`chapter-card-img ${classname}`}>
-        <img src={chapterImage} alt="chapterImage" />
+        <img src={chapterImage} alt="chapterImage" loading="lazy" />
       </div>
       <div className="chapter-card-content">
         <div className="chapter-card-title">{chapterName}</div>
