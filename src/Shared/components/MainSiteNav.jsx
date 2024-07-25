@@ -36,7 +36,7 @@ const MainSiteNav = () => {
     <nav className="main-nav" ref={navRef}>
       <div className="container">
         <NavLink to={"/"} className="main-nav-logo" onClick={handleNavLinkClick}>
-          <img src={logo} alt="IEEE-Logo" />
+          <img src={logo} alt="IEEE-Logo" loading="lazy" />
         </NavLink>
         <div className={`nav-links ${show ? "show" : ""}`}>
           <ul>
