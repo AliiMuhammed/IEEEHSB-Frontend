@@ -36,7 +36,7 @@ const Hero = () => {
             </Link>
           </div>
           <div className="logo-container">
-            <img src={logo} alt="IEEE Helwan Logo" className="logo" />
+            <img src={logo} alt="IEEE Helwan Logo" className="logo" loading="lazy" />
           </div>
         </div>
       </div>
