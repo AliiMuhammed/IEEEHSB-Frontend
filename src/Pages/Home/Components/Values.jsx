@@ -11,14 +11,14 @@ const Values = () => {
         <MainSiteHeader title={"Values"} />
         <div className="values">
           <div className="values-img">
-            <img src={values1} alt="values" />
+            <img src={values1} loading="lazy" alt="values" />
           </div>
           <div className="values-img">
             <img src={values2} alt="values" />
           </div>
           <div className="value">
             <div className="pin-img">
-              <img src={pin} alt="pin" />
+              <img loading="lazy" src={pin} alt="pin" />
             </div>
             <h3>Teamwork</h3>
             <p>
@@ -28,7 +28,7 @@ const Values = () => {
           </div>
           <div className="value">
             <div className="pin-img">
-              <img src={pin} alt="pin" />
+              <img loading="lazy" src={pin} alt="pin" />
             </div>
             <h3>Time management</h3>
             <p>
@@ -38,7 +38,7 @@ const Values = () => {
           </div>
           <div className="value">
             <div className="pin-img">
-              <img src={pin} alt="pin" />
+              <img loading="lazy" src={pin} alt="pin" />
             </div>
             <h3>Networking</h3>
             <p>
@@ -48,7 +48,7 @@ const Values = () => {
           </div>
           <div className="value">
             <div className="pin-img">
-              <img src={pin} alt="pin" />
+              <img loading="lazy" src={pin} alt="pin" />
             </div>
             <h3>Leadership skills</h3>
             <p>
