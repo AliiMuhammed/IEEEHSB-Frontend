@@ -1,7 +1,7 @@
 import React from "react";
 import { IoPersonOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import "../style/chapterCard.css"
+import "../style/chapterCard.css";
 const ChapterCard = ({
   chapterImage,
   classname,
@@ -21,9 +21,7 @@ const ChapterCard = ({
           {`More than ${number} Volanteer`}
         </div>
         <Link to={link} className={`main-btn chapter-btn ${classname}`}>
-          <div className="chapter-button">
-            <span className="txt1">discover</span>
-          </div>
+          discover
         </Link>
       </div>
     </div>
