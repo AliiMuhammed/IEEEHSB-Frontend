@@ -179,3 +179,22 @@
 .login-section .container .left form label {
     font-size: 1.3rem;
 }
+
+@media only screen and (max-width: 991px) {
+    .login-section .container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .login-section .container .right {
+        display: none;
+    }
+    .login-section .container .left{
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+}
+}

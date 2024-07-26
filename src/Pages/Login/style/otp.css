@@ -12,7 +12,6 @@
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     justify-content: center;
-
     height: 65%;
 }
 
@@ -95,7 +94,6 @@
 .otp-section .container .left form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
     height: 100%;
     width: 100%;
     justify-content: space-evenly;
@@ -179,4 +177,40 @@
 
 .otp-section .container .left form .main-btn.otp-btn:hover {
     background-color: var(--hover-color);
+}
+
+@media only screen and (max-width: 991px) {
+
+    .otp-section .container {
+        justify-items:center;
+        grid-template-columns: 1fr;
+
+    }
+
+    .otp-section .container .right {
+        display: none;
+    }
+    .otp-section .container .left {
+        padding: 1.5rem;
+        width: 85%;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        text-align: center;
+}
+
+    .otp-section .container .left form .otp-digits input {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+        padding: 0.5rem;
+
+    }
+    .otp-section .container .left form .otp-digits {
+        
+        gap: 1rem;
+    }
+    
 }

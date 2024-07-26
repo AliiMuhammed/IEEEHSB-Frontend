@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Dancing+Script:wght@400..700&display=swap');
+
+.main-hero-pages {
+    height: 100vh;
+    margin-top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.main-hero-pages .container {
+    width: 85%;
+}
+
+.main-hero-pages img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.main-hero-pages::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.main-hero-pages .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.main-hero-pages .container .text-container {
+    height: 100%;
+    color: var(--second-font-color);
+}
+
+.main-hero-pages .container .text-container .quote-container {
+    width: 80%;
+    position: relative;
+}
+
+.main-hero-pages .container .text-container .quote-container q {
+    font-size: 6rem;
+    font-family: "Dancing Script", cursive;
+    font-style: italic;
+    line-height: 1.1;
+
+}
+
+
+.main-hero-pages .container .text-container .quote-container .author {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 1.5rem;
+    position: relative;
+    margin-top: 2rem;
+}
+.main-hero-pages .container .text-container .quote-container .author::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left:0%;
+    transform: translate(-0%, -50%);
+    width: 20rem;
+    height: 5px;
+    background-color: var(--hover-color);
+    -webkit-transform: translate(-0%, -50%);
+    -moz-transform: translate(-0%, -50%);
+    -ms-transform: translate(-0%, -50%);
+    -o-transform: translate(-0%, -50%);
+}
+
+.main-hero-pages .container .text-container p {
+    width: 60%;
+    font-size: 2rem;
+}
