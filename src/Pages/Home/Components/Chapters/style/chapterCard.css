@@ -3,7 +3,7 @@
 }
 
 .chapter-card {
-    height: 24rem;
+    height: 25rem;
     width: 100%;
     display: grid;
     grid-template-rows: 60% 40%;
@@ -93,8 +93,7 @@
     color: var(--second-font-color);
     border-radius: 10px;
     text-transform: uppercase;
-    overflow: hidden;
-    position: relative;
+    margin-bottom: 1rem;
 }
 
 .chapter-card-content .main-btn.chapter-btn.ras {
