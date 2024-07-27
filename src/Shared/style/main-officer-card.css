@@ -35,7 +35,6 @@
 
 .main-officer-card-content {
   width: 80%;
-  height: 7rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,4 +92,45 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.main-officer-card.superVisorCard .main-officer-card-social {
+  display: none;
+}
+
+.main-officer-card.superVisorCard .main-officer-card-content {
+  height: 7rem;
+}
+
+.main-officer-card.ComsocCard .main-officer-card-content {
+  background-color: var(--main-Comsocchapter-color);
+}
+
+.main-officer-card.PesCard .main-officer-card-content {
+  background-color: var(--main-Peschapter-color);
+}
+
+.main-officer-card.WieCard .main-officer-card-content {
+  background-color: var(--main-WieChapter-color);
+
+}
+
+.main-officer-card.RasCard .main-officer-card-content {
+  background-color: var(--main-RasChapter-color);
+}
+
+.main-officer-card.ComsocCard .main-officer-card-des {
+  color: var(--second-Comsocchapter-color);
+}
+
+.main-officer-card.PesCard .main-officer-card-des {
+  color: var(--second-Peschapter-Color);
+}
+
+.main-officer-card.RasCard .main-officer-card-des {
+  color: var(--second-RasChapter-color);
+}
+
+.main-officer-card.WieCard .main-officer-card-des {
+  color: var(--second-WieChapter-color);
 }

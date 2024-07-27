@@ -4,9 +4,9 @@ import { FaLinkedin } from "react-icons/fa";
 import "../style/main-officer-card.css";
 import { Link } from "react-router-dom";
 
-const MainOfficerCard = ({ img, name, des, facebook, linkedin }) => {
+const MainOfficerCard = ({ img, name, des, facebook, linkedin, className }) => {
   return (
-    <div className="main-officer-card">
+    <div className={`main-officer-card ${className}`}>
       <div className="main-officer-card-img">
         <img src={img} alt={name} />
       </div>

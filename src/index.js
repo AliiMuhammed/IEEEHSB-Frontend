@@ -6,8 +6,8 @@ import { Provider } from "react-redux";
 import store from "./Redux/store";
 import { createRoot } from "react-dom/client";
 import App from "./App";
-
 import "./Style/index.css";
+// import "./Style/normalize.css"
 import "@fontsource/cairo";
 
 const root = createRoot(document.getElementById("root"));
