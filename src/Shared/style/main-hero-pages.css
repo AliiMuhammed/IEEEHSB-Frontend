@@ -70,11 +70,12 @@
     position: relative;
     margin-top: 2rem;
 }
+
 .main-hero-pages .container .text-container .quote-container .author::after {
     content: "";
     position: absolute;
     top: 50%;
-    left:0%;
+    left: 0%;
     transform: translate(-0%, -50%);
     width: 20rem;
     height: 5px;
@@ -89,3 +90,73 @@
     width: 60%;
     font-size: 2rem;
 }
+
+@media only screen and (max-width: 767px) {
+    .main-hero-pages .container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .main-hero-pages .container .text-container {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .main-hero-pages .container .text-container .quote-container {
+        width: 100%;
+    }
+
+    .main-hero-pages .container .text-container .quote-container q {
+        font-size: 3rem;
+    }
+
+    .main-hero-pages .container .text-container .quote-container .author::after {
+        width: 7rem;
+        height: 2px;
+
+    }
+
+    .main-hero-pages .container .text-container p {
+        width: 100%;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+    }
+
+    .main-hero-pages .container .text-container .quote-container .author {
+
+        font-size: 1.2rem;
+
+        margin-top: 0rem;
+    }
+}
+
+/* medium */
+
+@media only screen and (min-width: 768px) and (max-width: 1280px) {
+    .main-hero-pages .container .text-container .quote-container {
+        width: 100%;
+    }
+
+    .main-hero-pages .container .text-container .quote-container q {
+        font-size: 4rem;
+    }
+
+    .main-hero-pages .container .text-container .quote-container .author::after {
+        width: 15rem;
+        height: 3px;
+
+    }
+
+    .main-hero-pages .container .text-container p {
+        width: 100%;
+        font-size: 1.5rem;
+        margin-top: 1rem;
+    }
+}
+
+/* large */
