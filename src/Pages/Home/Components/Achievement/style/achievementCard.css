@@ -1,7 +1,7 @@
 .achievement-card {
     color: var(--second-font-color);
-    width: 80%;
-    height: 15rem;
+
+    width: 18rem;
     background-color: var(--btns-main-bg-color);
     display: flex;
     align-items: center;
