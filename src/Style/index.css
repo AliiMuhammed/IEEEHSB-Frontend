@@ -54,14 +54,14 @@ body {
 }
 
 /* Media query for small screens  */
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
   .container {
     width: 90%;
   }
 }
 
 /* Media query for medium screens  */
-@media screen and (min-width: 992px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
   .container {
     width: 85%;
   }
@@ -69,7 +69,7 @@ body {
 
 /* Media query for large screens  */
 
-@media screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
   .container {
     width: 80%;
   }

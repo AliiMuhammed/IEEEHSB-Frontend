@@ -6,6 +6,7 @@ import Hero from "./Components/Hero";
 import "./Style/home.css";
 import Officers from "./Components/Officers";
 import http from "./../../Helper/http";
+import Partners from "./Components/Partners/Partners";
 const Home = () => {
   useEffect(() => {
     http
@@ -22,6 +23,7 @@ const Home = () => {
       <Hero />
       <Achievement />
       <Officers />
+      <Partners />
       <Values />
       <Chapters />
     </section>
